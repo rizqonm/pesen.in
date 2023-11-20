@@ -17,9 +17,11 @@ import com.example.pesenin.R
 
 @Composable
 fun TopBar() {
-    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp),
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(112.dp)
+        horizontalArrangement = Arrangement.spacedBy(112.dp),
     )
     {
         Image(
