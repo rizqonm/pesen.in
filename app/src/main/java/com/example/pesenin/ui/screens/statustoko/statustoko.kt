@@ -8,22 +8,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,7 +32,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -73,7 +68,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                 text = "Kantin DWP Filkom",
                 color = Color(0xff303030),
                 lineHeight = 1.2.em,
-                style = androidx.compose.ui.text.TextStyle(
+                style = TextStyle(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 ),
@@ -101,7 +96,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                 text = "Menu",
                 color = Color(0xff303030),
                 lineHeight = 1.22.em,
-                style = androidx.compose.ui.text.TextStyle(
+                style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold
                 ),
@@ -123,7 +118,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                     onClick = {
 
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFF)),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFFFF)),
                     modifier = Modifier
                         .width(160.dp)
                         .height(173.dp)
@@ -168,7 +163,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                     onClick = {
 
                     },
-                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFF)),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFFFF)),
                     modifier = Modifier
                         .width(160.dp)
                         .height(173.dp)
@@ -228,7 +223,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         color = Color(0xff303030),
                         textAlign = TextAlign.Center,
                         lineHeight = 1.29.em,
-                        style = androidx.compose.ui.text.TextStyle(
+                        style = TextStyle(
                             fontSize = 14.sp
                         ),
                         modifier = Modifier
@@ -250,30 +245,17 @@ fun StatusToko(modifier: Modifier = Modifier) {
                             else if(status == "Tutup"){status = "Buka"}
                             enableSimpan = true
                         },
-                        enabled = enableUbah,
+                        shape = RoundedCornerShape(8.dp),
                         modifier = Modifier
                             .align(alignment = Alignment.TopCenter)
                             .offset(x = 0.dp,
-                            y = 0.dp)
-                            .background(color=Color(0x3A62A0)),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0x3A62A0))
-
+                            y = (-1).dp
+                            )
+                            .requiredWidth(width = 350.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
                     ){
-                        Text("Ubah Status", color = Color.White, fontSize = 7.5.sp)
+                        Text("Ubah Status", color = Color.White, fontSize = 8.sp)
                     }
-//                        text = "Ubah Status",
-//                        color = Color.White,
-//                        textAlign = TextAlign.Center,
-//                        lineHeight = 1.17.em,
-//                        style = androidx.compose.ui.text.TextStyle(
-//                            fontSize = 12.sp,
-//                            fontWeight = FontWeight.Bold
-//                        ),
-//                        modifier = Modifier
-//                            .align(alignment = Alignment.TopStart)
-//                            .offset(x = 15.dp,
-//                                y = 5.dp)
-//                    )
                 }
                 Surface(
                     shape = RoundedCornerShape(5.dp),
@@ -296,7 +278,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                             color = Color(0xff8b9094),
                             textAlign = TextAlign.Center,
                             lineHeight = 1.2.em,
-                            style = androidx.compose.ui.text.TextStyle(
+                            style = TextStyle(
                                 fontSize = 10.sp
                             ),
                             modifier = Modifier
@@ -307,43 +289,24 @@ fun StatusToko(modifier: Modifier = Modifier) {
                                 .wrapContentHeight(align = Alignment.CenterVertically))
                     }
                 }
-                Box(
-                    modifier = Modifier
+                Button(
+                    onClick = {
+                        enableUbah = true
+                        enableSimpan = false
+                    },
+                    enabled = enableSimpan,
+                    shape = RoundedCornerShape(5.dp),
+                    contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (enableSimpan) Color(0xFF3A62A0) else Color(0xFF6286BD)),
+                            modifier = Modifier
                         .align(alignment = Alignment.TopStart)
                         .offset(x = 57.dp,
                             y = 94.dp)
                         .requiredWidth(width = 219.dp)
-                        .requiredHeight(height = 25.dp)
-                        .clip(shape = RoundedCornerShape(5.dp))
-                        .background(color = Color(0xff6286bd))
+                        .requiredHeight(height = 27.dp)
                 ) {
-                    Button(
-                        onClick = {
-                            enableUbah = true
-                            enableSimpan = false
-                        },
-                        enabled = enableSimpan,
-                        modifier = Modifier
-                            .align(alignment = Alignment.Center)
-                            .background(color=Color(0x6286BD)),
-                        colors = ButtonDefaults.buttonColors(containerColor = Color(0x6286BD))
-
-                    ){
-                        Text("Simpan", color = Color.White, fontSize = 7.5.sp)
-                    }
-//                        text = "Simpan",
-//                        color = Color.White,
-//                        textAlign = TextAlign.Center,
-//                        lineHeight = 1.17.em,
-//                        style = androidx.compose.ui.text.TextStyle(
-//                            fontSize = 12.sp,
-//                            fontWeight = FontWeight.Bold
-//                        ),
-//                        modifier = Modifier
-//                            .align(alignment = Alignment.TopStart)
-//                            .offset(x = 0.dp,
-//                                y = 5.dp)
-//                            .requiredWidth(width = 219.dp))
+                    Text("Simpan", color = Color.White, fontSize = 8.sp)
                 }
             }
         }
@@ -384,7 +347,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .requiredWidth(width = 328.dp)
                     .requiredHeight(height = 35.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0x3A62A0))
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEA5E5E))
 
             ) {
                 Text(
@@ -392,174 +355,15 @@ fun StatusToko(modifier: Modifier = Modifier) {
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     lineHeight = 1.29.em,
-                    style = androidx.compose.ui.text.TextStyle(
+                    style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold
                     ),
                     modifier = Modifier
-//                        .align(alignment = Alignment.TopStart)
-//                        .offset(x = 0.dp,
-//                            y = 8.dp)
                         .requiredWidth(width = 328.dp)
                         .wrapContentHeight(align = Alignment.CenterVertically))
             }
         }
-//        VariantDefaultDarkModeFalse(
-//            modifier = Modifier
-//                .align(alignment = Alignment.TopStart)
-//                .offset(x = 1.dp,
-//                    y = 0.dp))
-//        Box(
-//            modifier = Modifier
-//                .align(alignment = Alignment.TopStart)
-//                .offset(x = 0.dp,
-//                    y = 731.dp)
-//                .requiredWidth(width = 360.dp)
-//                .requiredHeight(height = 69.dp)
-//                .background(color = Color.White)
-//        ) {
-//            Box(
-//                modifier = Modifier
-//                    .align(alignment = Alignment.TopStart)
-//                    .offset(x = 18.dp,
-//                        y = 22.dp)
-//                    .requiredWidth(width = 323.dp)
-//                    .requiredHeight(height = 25.dp)
-//            ) {
-//                Image(
-//                    painter = painterResource(id = R.drawable.statustoko_home),
-//                    contentDescription = "material-symbols:home-outline",
-//                    colorFilter = ColorFilter.tint(Color(0xff3a62a0)),
-//                    modifier = Modifier
-//                        .requiredSize(size = 25.dp))
-//                Image(
-//                    painter = painterResource(id = R.drawable.statustoko_list),
-//                    contentDescription = "gg:list",
-//                    colorFilter = ColorFilter.tint(Color(0xff70787d)),
-//                    modifier = Modifier
-//                        .align(alignment = Alignment.TopStart)
-//                        .offset(x = 152.dp,
-//                            y = 0.dp)
-//                        .requiredSize(size = 25.dp))
-//                Image(
-//                    painter = painterResource(id = R.drawable.statustoko_food),
-//                    contentDescription = "mdi:food-outline",
-//                    colorFilter = ColorFilter.tint(Color(0xff70787d)),
-//                    modifier = Modifier
-//                        .align(alignment = Alignment.TopStart)
-//                        .offset(x = 288.dp,
-//                            y = 0.dp)
-//                        .requiredSize(size = 25.dp))
-//            }
-//        }
-    }
-}
-
-//@Composable
-//fun VariantDefaultDarkModeFalse(modifier: Modifier) {
-//
-//}
-//
-//@Composable
-//fun VariantDefaultDarkModeFalse(modifier: Modifier = Modifier) {
-//    Box(
-//        modifier = modifier
-//            .requiredWidth(width = 373.dp)
-//            .requiredHeight(height = 47.dp)
-//    ) {
-//        Row(
-//            horizontalArrangement = Arrangement.spacedBy(7.dp, Alignment.Start),
-//            verticalAlignment = Alignment.CenterVertically,
-//            modifier = Modifier
-//                .align(alignment = Alignment.TopEnd)
-//                .offset(x = (-32.70741271972656).dp,
-//                    y = 18.dp)
-//        ) {
-//            Image(
-//                painter = painterResource(id = R.drawable.signal),
-//                contentDescription = "Elements / Signal",
-//                colorFilter = ColorFilter.tint(Color.Black),
-//                modifier = Modifier
-//                    .requiredWidth(width = 23.dp)
-//                    .requiredHeight(height = 14.dp))
-//            Image(
-//                painter = painterResource(id = R.drawable.connection),
-//                contentDescription = "Elements / Connection",
-//                colorFilter = ColorFilter.tint(Color.Black),
-//                modifier = Modifier
-//                    .requiredWidth(width = 20.dp)
-//                    .requiredHeight(height = 14.dp))
-//            TypeNormalDarkModeFalse()
-//        }
-//        TypeNoneDarkModeFalse(
-//            modifier = Modifier
-//                .align(alignment = Alignment.TopEnd)
-//                .offset(x = (-121).dp,
-//                    y = 6.dp))
-//        IconFalseDarkModeFalse(
-//            modifier = Modifier
-//                .align(alignment = Alignment.Center)
-//                .offset(x = (-139.5).dp,
-//                    y = 2.dp))
-//    }
-//}
-
-//@Composable
-//fun TypeNormalDarkModeFalse(modifier: Modifier = Modifier) {
-//    Box(
-//        modifier = modifier
-//            .requiredWidth(width = 32.dp)
-//            .requiredHeight(height = 15.dp)
-//    ) {
-//        Box(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .clip(shape = RoundedCornerShape(4.615384578704834.dp))
-//                .border(border = BorderStroke(1.1538461446762085.dp, Color.Black),
-//                    shape = RoundedCornerShape(4.615384578704834.dp)))
-//        Image(
-//            painter = painterResource(id = R.drawable.cap),
-//            contentDescription = "Cap",
-//            alpha = 0.5f,
-//            modifier = Modifier
-//                .fillMaxSize())
-//        Box(
-//            modifier = Modifier
-//                .fillMaxSize()
-//                .clip(shape = RoundedCornerShape(2.307692289352417.dp))
-//                .background(color = Color.Black))
-//    }
-//}
-
-//@OptIn(ExperimentalMaterial3Api::class)
-////@Composable
-//fun TypeNoneDarkModeFalse(modifier: Modifier = Modifier) {
-//    Box(
-//        modifier = modifier
-//            .requiredSize(size = 6.dp)
-//    ) {
-//        Badge()
-//    }
-//}
-
-@Composable
-fun IconFalseDarkModeFalse(modifier: Modifier = Modifier) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterHorizontally),
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
-    ) {
-        Text(
-            text = "9:41",
-            color = Color.Black,
-            textAlign = TextAlign.Center,
-            lineHeight = 0.94.em,
-            style = androidx.compose.ui.text.TextStyle(
-                fontSize = 18.sp,
-                letterSpacing = (-0.5).sp
-            ),
-            modifier = Modifier
-                .wrapContentHeight(align = Alignment.CenterVertically))
     }
 }
 
