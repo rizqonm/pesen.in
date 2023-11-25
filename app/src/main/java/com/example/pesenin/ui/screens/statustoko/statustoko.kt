@@ -7,7 +7,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
@@ -15,12 +17,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Badge
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -114,30 +119,40 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         y = 55.dp)
                     .clip(shape = RoundedCornerShape(5.dp))
             ) {
-                Box(
+                Button(
+                    onClick = {
+
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFF)),
                     modifier = Modifier
-                        .requiredWidth(width = 160.dp)
-                        .requiredHeight(height = 173.dp)
+                        .width(160.dp)
+                        .height(173.dp)
+                        .background(MaterialTheme.colorScheme.background, shape = RoundedCornerShape(4.dp))
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.statustoko_daftarpesanan),
-                        contentDescription = "17239155_5841498 1",
-                        modifier = Modifier
-                            .requiredWidth(width = 160.dp)
-                            .requiredHeight(height = 126.dp))
-                    Text(
-                        text = " Daftar Pesanan",
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.17.em,
-                        style = androidx.compose.ui.text.TextStyle(
-                            fontSize = 12.sp
-                        ),
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 0.dp,
-                                y = 137.dp)
-                            .requiredWidth(width = 160.dp))
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.statustoko_daftarpesanan),
+                            contentDescription = "17239155_5841498 1",
+                            modifier = Modifier
+                                .width(160.dp)
+                                .height(126.dp)
+                                .clip(shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                        )
+                        Text(
+                            text = " Daftar Pesanan",
+                            color = Color.Black,
+                            textAlign = TextAlign.Center,
+                            style = TextStyle(
+                                fontSize = 12.sp
+                            ),
+                            modifier = Modifier
+                                .padding(top = 8.dp)
+                        )
+                    }
                 }
             }
             Surface(
@@ -149,30 +164,40 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         y = 55.dp)
                     .clip(shape = RoundedCornerShape(5.dp))
             ) {
-                Box(
+                Button(
+                    onClick = {
+
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFFFF)),
                     modifier = Modifier
-                        .requiredWidth(width = 158.dp)
-                        .requiredHeight(height = 173.dp)
+                        .width(160.dp)
+                        .height(173.dp)
+                        .background(MaterialTheme.colorScheme.background, shape = RoundedCornerShape(4.dp))
                 ) {
-                    Text(
-                        text = " Menu Kantin",
-                        color = Color.Black,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 1.17.em,
-                        style = androidx.compose.ui.text.TextStyle(
-                            fontSize = 12.sp
-                        ),
-                        modifier = Modifier
-                            .align(alignment = Alignment.TopStart)
-                            .offset(x = 0.dp,
-                                y = 136.dp)
-                            .requiredWidth(width = 158.dp))
-                    Image(
-                        painter = painterResource(id = R.drawable.statustoko_menukantin),
-                        contentDescription = "7182239_3582346 1",
-                        modifier = Modifier
-                            .requiredWidth(width = 158.dp)
-                            .requiredHeight(height = 126.dp))
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = R.drawable.statustoko_menukantin),
+                            contentDescription = "17239155_5841498 1",
+                            modifier = Modifier
+                                .width(160.dp)
+                                .height(126.dp)
+                                .clip(shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp))
+                        )
+                        Text(
+                            text = "Menu Kantin",
+                            color = Color.Black,
+                            textAlign = TextAlign.Center,
+                            style = TextStyle(
+                                fontSize = 12.sp
+                            ),
+                            modifier = Modifier
+                                .padding(top = 8.dp)
+                        )
+                    }
                 }
             }
         }
