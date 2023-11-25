@@ -67,5 +67,4 @@ fun Navigation(
             Home(loginViewModel = loginViewModel)
         }
     }
-
 }
