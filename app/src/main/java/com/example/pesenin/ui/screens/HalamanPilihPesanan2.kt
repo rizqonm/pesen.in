@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -75,7 +76,7 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                     y = 128.dp
                 )
                 .fillMaxWidth()
-                .requiredHeight(height = 620.dp)
+                .fillMaxHeight()
                 .background(color = Color(0xfff4f5f9))
         ) {
             Row(
@@ -222,10 +223,11 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
             ) {
                 Button(
                     onClick = {},
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFC7B33)),
+                    shape = RoundedCornerShape(size = 8.dp),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
-                        .background(color = Color(0xFFFC7B33), shape = RoundedCornerShape(size = 8.dp))
                 ) {
                     Text(
                         text = "Pesan",
