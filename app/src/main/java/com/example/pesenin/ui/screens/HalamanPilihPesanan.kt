@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
@@ -76,14 +77,14 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 143.dp)
                 .clip(shape = RoundedCornerShape(6.dp))
                 .background(color = Color(0xfff4f5f9)))
-        Column(
+        Column( 
             modifier = Modifier
                 .offset(
                     x = 0.dp,
                     y = 284.dp
                 )
                 .fillMaxWidth()
-                .requiredHeight(height = 500.dp)
+                .fillMaxHeight()
                 .background(color = Color(0xfff4f5f9))
         ) {
             Row( //Fragment Menu

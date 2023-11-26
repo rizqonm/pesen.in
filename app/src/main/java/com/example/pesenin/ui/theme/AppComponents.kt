@@ -44,14 +44,16 @@ fun TopBar() {
 
 @Composable
 fun BottomBar() {
-    Row(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     )
     {
         Image(
             painter = painterResource(id = R.drawable.materialsymbolshomeoutline),
-            contentDescription = "Back",
+            contentDescription = "Home",
             modifier = Modifier
                 .size(24.dp)
                 .clickable {
@@ -60,7 +62,7 @@ fun BottomBar() {
         )
         Image(
             painter = painterResource(id = R.drawable.mdicardsheartoutline),
-            contentDescription = "Back",
+            contentDescription = "Menu",
             modifier = Modifier
                 .size(24.dp)
                 .clickable {
@@ -69,7 +71,46 @@ fun BottomBar() {
         )
         Image(
             painter = painterResource(id = R.drawable.icoutlineaccountcircle),
-            contentDescription = "Back",
+            contentDescription = "Profile",
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+
+                }
+        )
+    }
+}
+
+@Composable
+fun BottomBarKantin() {
+    Row(modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
+    )
+    {
+        Image(
+            painter = painterResource(id = R.drawable.materialsymbolshomeoutline),
+            contentDescription = "Home",
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+
+                }
+        )
+        Image(
+            painter = painterResource(id = R.drawable.list),
+            contentDescription = "Order",
+            modifier = Modifier
+                .size(24.dp)
+                .clickable {
+
+                }
+        )
+        Image(
+            painter = painterResource(id = R.drawable.mdifoodoutline),
+            contentDescription = "Menu",
             modifier = Modifier
                 .size(24.dp)
                 .clickable {
@@ -90,4 +131,10 @@ fun TopBarPreview() {
 @Composable
 fun BottomBarPreview() {
     BottomBar()
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BottomBarKantinPreview() {
+    BottomBarKantin()
 }
