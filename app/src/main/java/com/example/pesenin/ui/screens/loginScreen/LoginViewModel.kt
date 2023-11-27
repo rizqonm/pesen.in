@@ -40,7 +40,7 @@ class LoginViewModel(
         loginUiState = loginUiState.copy(emailSignUp = email)
     }
 
-    fun onKtmChange(bitmap:Bitmap, imageUri:Uri, img: String){
+    fun onProfilChange(bitmap:Bitmap, imageUri:Uri, img: String){
         loginUiState = loginUiState.copy(bitmap = bitmap)
         loginUiState = loginUiState.copy(img = img)
         loginUiState = loginUiState.copy(imageUri = imageUri)
@@ -50,8 +50,12 @@ class LoginViewModel(
         loginUiState = loginUiState.copy(password = password)
     }
 
-    fun onUserNameChangeSignUp(userName:String){
-        loginUiState = loginUiState.copy(userNameSignUp = userName)
+    fun onNimChangeSignUp(nim:String){
+        loginUiState = loginUiState.copy(nimSignUp = nim)
+    }
+
+    fun onPhoneChangeSignUp(phone:String){
+        loginUiState = loginUiState.copy(phoneSignUp = phone)
     }
 
     fun onPasswordChangeSignUp(password:String){
@@ -67,35 +71,39 @@ class LoginViewModel(
                 loginUiState.password.isNotBlank()
 
     private fun validateSignUpForm() =
-        loginUiState.userNameSignUp.isNotBlank() &&
                 loginUiState.passwordSignUp.isNotBlank() &&
                 loginUiState.confirmPasswordSignUp.isNotBlank()
 
     fun  createUser(context: Context) = viewModelScope.launch {
         try {
-            if(!loginUiState.userNameSignUp.isNotBlank()){
-                throw IllegalArgumentException("Nama harus diisi")
+            if(!loginUiState.emailSignUp.isNotBlank()){
+                throw IllegalArgumentException("Email harus diisi")
+            }
+            if(!loginUiState.nimSignUp.isNotBlank()){
+                throw IllegalArgumentException("NIM harus diisi")
+            }
+            if(!loginUiState.phoneSignUp.isNotBlank()){
+                throw IllegalArgumentException("Nomor telepon harus diisi")
             }
             if(!validateSignUpForm()){
-                throw IllegalArgumentException("Email dan Password harus diisi")
+                throw IllegalArgumentException("Password harus diisi")
             }
             if(loginUiState.passwordSignUp!=loginUiState.confirmPasswordSignUp){
                 throw IllegalArgumentException("Konfirmasi password tidak sama")
             }
             if(loginUiState.imageUri==null){
-                throw IllegalArgumentException("Upload KTM anda terlebih dahulu")
+                throw IllegalArgumentException("Upload foto profil anda terlebih dahulu")
             }
             loginUiState = loginUiState.copy(isLoading = true)
 
             loginUiState = loginUiState.copy(signUpError = null)
-
 
             AuthRepository.createUser(
                 loginUiState.emailSignUp,
                 loginUiState.passwordSignUp
             ){ isSucessful ->
                 if(isSucessful){
-                    UserRepository.CreateUser(loginUiState.emailSignUp,loginUiState.userNameSignUp,false,loginUiState.img,loginUiState.passwordSignUp,AuthRepository.getUserId()) { success ->
+                    UserRepository.CreateUser(loginUiState.emailSignUp,loginUiState.nimSignUp,loginUiState.phoneSignUp,loginUiState.img,loginUiState.passwordSignUp,AuthRepository.getUserId()) { success ->
                         if(success){
                             Toast.makeText(
                                 context,
@@ -115,7 +123,7 @@ class LoginViewModel(
                         if(success){
                             Toast.makeText(
                                 context,
-                                "Success Upload KTM",
+                                "Success Upload Foto Profil",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -185,7 +193,8 @@ data class LoginUiState(
     val email:String = "",
     val password:String = "",
     val emailSignUp:String = "",
-    val userNameSignUp:String = "",
+    val nimSignUp:String = "",
+    val phoneSignUp:String = "",
     val passwordSignUp:String = "",
     val confirmPasswordSignUp:String = "",
     val isLoading:Boolean = false,
