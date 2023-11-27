@@ -76,7 +76,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                     .requiredWidth(width = 204.dp))
         }
         Image(
-            painter = painterResource(id = R.drawable.statustoko_filkom),
+            painter = painterResource(id = R.drawable.logofilkom),
             contentDescription = "image 6",
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
@@ -130,7 +130,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.statustoko_daftarpesanan),
+                            painter = painterResource(id = R.drawable.logofilkom),
                             contentDescription = "17239155_5841498 1",
                             modifier = Modifier
                                 .width(160.dp)
@@ -175,7 +175,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.statustoko_menukantin),
+                            painter = painterResource(id = R.drawable.logofilkom),
                             contentDescription = "17239155_5841498 1",
                             modifier = Modifier
                                 .width(160.dp)
@@ -319,7 +319,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 139.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.statustoko_wallpaper),
+                painter = painterResource(id = R.drawable.logofilkom),
                 contentDescription = "image 5",
                 modifier = Modifier
                     .align(alignment = Alignment.TopCenter)
