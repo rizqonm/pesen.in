@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pesenin.R
@@ -260,28 +261,74 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                         .height(40.dp)
                         .width(360.dp)
                 ){
-                    Image(
-                        painter = painterResource(id = R.drawable.bx_detail),
-                        contentDescription = "Detail",
+                    Box(
                         modifier = Modifier
-                            .size(21.dp)
-                            .background(
-                                color = Color(0xFF2B5699),
-                                shape = RoundedCornerShape(size = 5.dp)
+                            .requiredWidth(width = 28.dp)
+                            .requiredHeight(height = 25.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(color = Color(0xff3a62a0))
+                    ) {
+                        Button(
+                            onClick = {
+                            },
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopCenter)
+                                .offset(
+                                    x = 0.dp,
+                                    y = (-1).dp
+                                )
+                                .requiredWidth(width = 250.dp)
+                                .requiredHeight(height = 250.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.bx_detail),
+                                contentDescription = "Detail",
+                                modifier = Modifier
+                                    .size(21.dp)
+                                    .background(
+                                        color = Color(0xFF2B5699),
+                                        shape = RoundedCornerShape(size = 5.dp)
+                                    )
+                                    .padding(start = 3.dp, top = 3.dp, end = 2.dp, bottom = 3.dp)
                             )
-                            .padding(start = 3.dp, top = 3.dp, end = 2.dp, bottom = 3.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.mdi_trash),
-                        contentDescription = "Delete",
+                        }
+                    }
+                    Box(
                         modifier = Modifier
-                            .size(21.dp)
-                            .background(
-                                color = Color(0xFFEA5E5E),
-                                shape = RoundedCornerShape(size = 5.dp)
+                            .requiredWidth(width = 28.dp)
+                            .requiredHeight(height = 25.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(color = Color(0xff3a62a0))
+                    ) {
+                        Button(
+                            onClick = {
+                            },
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopCenter)
+                                .offset(
+                                    x = 0.dp,
+                                    y = (-1).dp
+                                )
+                                .requiredWidth(width = 250.dp)
+                                .requiredHeight(height = 250.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEA5E5E))
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.mdi_trash),
+                                contentDescription = "Delete",
+                                modifier = Modifier
+                                    .size(21.dp)
+                                    .background(
+                                        color = Color(0xFFEA5E5E),
+                                        shape = RoundedCornerShape(size = 5.dp)
+                                    )
+                                    .padding(start = 4.dp, top = 3.dp, end = 3.dp, bottom = 3.dp)
                             )
-                            .padding(start = 4.dp, top = 3.dp, end = 3.dp, bottom = 3.dp)
-                    )
+                        }
+                    }
                 }
             }
             Row(//menu
@@ -356,28 +403,74 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                         .height(40.dp)
                         .width(360.dp)
                 ){
-                    Image(
-                        painter = painterResource(id = R.drawable.bx_detail),
-                        contentDescription = "Home",
+                    Box(
                         modifier = Modifier
-                            .size(21.dp)
-                            .background(
-                                color = Color(0xFF2B5699),
-                                shape = RoundedCornerShape(size = 5.dp)
+                            .requiredWidth(width = 28.dp)
+                            .requiredHeight(height = 25.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(color = Color(0xff3a62a0))
+                    ) {
+                        Button(
+                            onClick = {
+                            },
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopCenter)
+                                .offset(
+                                    x = 0.dp,
+                                    y = (-1).dp
+                                )
+                                .requiredWidth(width = 250.dp)
+                                .requiredHeight(height = 250.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.bx_detail),
+                                contentDescription = "Detail",
+                                modifier = Modifier
+                                    .size(21.dp)
+                                    .background(
+                                        color = Color(0xFF2B5699),
+                                        shape = RoundedCornerShape(size = 5.dp)
+                                    )
+                                    .padding(start = 3.dp, top = 3.dp, end = 2.dp, bottom = 3.dp)
                             )
-                            .padding(start = 3.dp, top = 3.dp, end = 2.dp, bottom = 3.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.mdi_trash),
-                        contentDescription = "Home",
+                        }
+                    }
+                    Box(
                         modifier = Modifier
-                            .size(21.dp)
-                            .background(
-                                color = Color(0xFFEA5E5E),
-                                shape = RoundedCornerShape(size = 5.dp)
+                            .requiredWidth(width = 28.dp)
+                            .requiredHeight(height = 25.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(color = Color(0xff3a62a0))
+                    ) {
+                        Button(
+                            onClick = {
+                            },
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopCenter)
+                                .offset(
+                                    x = 0.dp,
+                                    y = (-1).dp
+                                )
+                                .requiredWidth(width = 250.dp)
+                                .requiredHeight(height = 250.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFEA5E5E))
+                        ){
+                            Image(
+                                painter = painterResource(id = R.drawable.mdi_trash),
+                                contentDescription = "Delete",
+                                modifier = Modifier
+                                    .size(21.dp)
+                                    .background(
+                                        color = Color(0xFFEA5E5E),
+                                        shape = RoundedCornerShape(size = 5.dp)
+                                    )
+                                    .padding(start = 4.dp, top = 3.dp, end = 3.dp, bottom = 3.dp)
                             )
-                            .padding(start = 4.dp, top = 3.dp, end = 3.dp, bottom = 3.dp)
-                    )
+                        }
+                    }
                 }
             }
         }
@@ -391,8 +484,8 @@ fun MenuKantin(modifier: Modifier = Modifier) {
 }
 
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun MenuKantinPreview() {
-//    MenuKantin(Modifier)
-//}
+@Preview(showBackground = true)
+@Composable
+private fun MenuKantinPreview() {
+    MenuKantin(Modifier)
+}
