@@ -1,4 +1,4 @@
-package com.example.pesenin.ui.screens
+package com.example.pesenin.ui.screens.pesan
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

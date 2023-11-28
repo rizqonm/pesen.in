@@ -1,31 +1,20 @@
-package com.example.pesenin.ui.screens
+package com.example.pesenin.ui.screens.pesan
 
 import  androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,7 +31,7 @@ import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
+fun HalamanStatusPesanan2(modifier: Modifier = Modifier) {
 //    var pesan1 by remember { mutableIntStateOf(0) }
 
     Box(
@@ -85,10 +74,10 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(112.dp),
         ) {
             Image(
-                painter = painterResource(id = R.drawable.pesanandikonfirmasi),
+                painter = painterResource(id = R.drawable.pesanandisiapkan),
                 contentDescription = "BuktiPembayaran",
                 modifier = Modifier
-                    .size(105.dp, 133.dp)
+                    .size(164.dp, 148.dp)
             )
         }
         Box(
@@ -102,7 +91,7 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
 
         ) {
             Text(
-                text = "Pesanan Dikonfirmasi",
+                text = "Pesanan lagi disiapkan",
                 color = Color.Black,
                 textAlign = TextAlign.Center,
                 style = TextStyle(fontSize = 17.sp),
@@ -125,7 +114,7 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
                         .align(Alignment.CenterVertically) // Align gambar di tengah vertikal
                 )
                 Text(
-                    text = " 25 mins",
+                    text = " 19 mins",
                     color = Color.Black,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Normal,
@@ -159,6 +148,6 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-private fun HalamanStatusPesananPreview() {
-    HalamanStatusPesanan(Modifier)
+private fun HalamanStatusPesanan2Preview() {
+    HalamanStatusPesanan2(Modifier)
 }
