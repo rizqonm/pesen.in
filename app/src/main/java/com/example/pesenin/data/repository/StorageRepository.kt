@@ -38,4 +38,49 @@ class StorageRepository {
         }
         println("$url")
     }
+
+    fun getStorePhoto(fileName:String, url: (String)->Unit){
+        val storage = FirebaseStorage.getInstance()
+        val storageReference = storage.reference
+        val imageRef = storageReference.child("store/$fileName")
+        imageRef.downloadUrl.addOnSuccessListener { uri ->
+            // Gunakan URI untuk menampilkan atau memproses gambar
+            val imageUrl = uri.toString()
+            // Contoh: Tampilkan URL gambar
+            url(imageUrl)
+        }.addOnFailureListener { exception ->
+            // Handle error
+            println("Error fetching image: $exception")
+        }
+    }
+
+    fun getMenuPhoto(fileName:String, url: (String)->Unit){
+        val storage = FirebaseStorage.getInstance()
+        val storageReference = storage.reference
+        val imageRef = storageReference.child("menu/$fileName")
+        imageRef.downloadUrl.addOnSuccessListener { uri ->
+            // Gunakan URI untuk menampilkan atau memproses gambar
+            val imageUrl = uri.toString()
+            // Contoh: Tampilkan URL gambar
+            url(imageUrl)
+        }.addOnFailureListener { exception ->
+            // Handle error
+            println("Error fetching image: $exception")
+        }
+    }
+
+    fun getQrisPhoto(fileName:String, url: (String)->Unit){
+        val storage = FirebaseStorage.getInstance()
+        val storageReference = storage.reference
+        val imageRef = storageReference.child("qris/$fileName")
+        imageRef.downloadUrl.addOnSuccessListener { uri ->
+            // Gunakan URI untuk menampilkan atau memproses gambar
+            val imageUrl = uri.toString()
+            // Contoh: Tampilkan URL gambar
+            url(imageUrl)
+        }.addOnFailureListener { exception ->
+            // Handle error
+            println("Error fetching image: $exception")
+        }
+    }
 }
