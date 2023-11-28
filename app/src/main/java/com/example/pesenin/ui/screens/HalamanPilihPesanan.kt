@@ -496,14 +496,14 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            BottomBar()
+            BottomBar(3)
         }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPilihPesananPreview() {
-    HalamanPilihPesanan(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPilihPesananPreview() {
+//    HalamanPilihPesanan(Modifier)
+//}
