@@ -86,7 +86,7 @@ fun LihatDaftarMenu(modifier: Modifier = Modifier){
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color(0xfff4f5f9))
         ){
-            BottomBar()
+            BottomBar(1)
 
         }
     }
