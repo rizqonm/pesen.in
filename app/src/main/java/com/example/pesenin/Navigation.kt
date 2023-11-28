@@ -28,7 +28,6 @@ enum class LoginRoutes{
 
 enum class HomeRoutes{
     Home,
-    Detail
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
