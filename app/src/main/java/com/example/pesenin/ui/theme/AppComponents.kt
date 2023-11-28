@@ -3,6 +3,7 @@ package com.example.pesenin.ui.theme
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -21,9 +22,21 @@ fun TopBar() {
         .fillMaxWidth()
         .padding(horizontal = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(112.dp),
+        horizontalArrangement = Arrangement.Center,
     )
     {
+        Image(
+            painter = painterResource(id = R.drawable.logofilkom),
+            contentDescription = "Logo",
+            modifier = Modifier
+                .size(100.dp,50.dp)
+        )
+    }
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp, vertical = 12.dp)
+    ){
         Image(
             painter = painterResource(id = R.drawable.epback),
             contentDescription = "Back",
@@ -32,12 +45,6 @@ fun TopBar() {
                 .clickable {
 
                 }
-        )
-        Image(
-            painter = painterResource(id = R.drawable.logofilkom),
-            contentDescription = "Logo",
-            modifier = Modifier
-                .size(100.dp,50.dp)
         )
     }
 }
@@ -66,7 +73,7 @@ fun BottomBar(active : Int) {
     }
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 32.dp, vertical = 16.dp),
+        .padding(horizontal = 48.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     )
@@ -125,7 +132,7 @@ fun BottomBarKantin(active: Int) {
     }
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 32.dp, vertical = 16.dp),
+        .padding(horizontal = 48.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     )

@@ -26,16 +26,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
+
 
     Box(
         modifier = modifier
@@ -243,20 +242,20 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Box(
+        Row(
             modifier = Modifier
                 .align(alignment = Alignment.BottomStart)
-                .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
+                .fillMaxWidth()
         ){
             BottomBar(1)
         }
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPilihPesanan2Preview() {
-    HalamanPilihPesanan2(Modifier)
-}
+//
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPilihPesanan2Preview() {
+//    HalamanPilihPesanan2(Modifier)
+//}
