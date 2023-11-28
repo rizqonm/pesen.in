@@ -36,7 +36,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
@@ -130,7 +129,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.logofilkom),
+                            painter = painterResource(id = R.drawable.statustoko_daftarpesanan),
                             contentDescription = "17239155_5841498 1",
                             modifier = Modifier
                                 .width(160.dp)
@@ -175,7 +174,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Image(
-                            painter = painterResource(id = R.drawable.logofilkom),
+                            painter = painterResource(id = R.drawable.statustoko_menukantin),
                             contentDescription = "17239155_5841498 1",
                             modifier = Modifier
                                 .width(160.dp)
@@ -319,14 +318,14 @@ fun StatusToko(modifier: Modifier = Modifier) {
                 .requiredHeight(height = 139.dp)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.logofilkom),
+                painter = painterResource(id = R.drawable.statustoko_filkom),
                 contentDescription = "image 5",
                 modifier = Modifier
                     .align(alignment = Alignment.TopCenter)
                     .offset(x = (-0).dp,
-                        y = (-34.75).dp)
-                    .requiredWidth(width = 395.dp)
-                    .requiredHeight(height = 184.dp)
+                        y = (-3.0).dp)
+                    .requiredWidth(width = 324.dp)
+                    .requiredHeight(height = 280.dp)
                     .clip(shape = RoundedCornerShape(12.dp)))
         }
         Surface(
@@ -341,8 +340,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
         ) {
             Button(
                 onClick = {
-                    val logout = Firebase.auth.signOut()
-                    logout
+                    Firebase.auth.signOut()
                 },
                 modifier = Modifier
                     .requiredWidth(width = 328.dp)
@@ -367,9 +365,9 @@ fun StatusToko(modifier: Modifier = Modifier) {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview(widthDp = 360, heightDp = 800)
-@Composable
-private fun HalamanUbahStatusTokoPreview() {
-    StatusToko(Modifier)
-}
+//@RequiresApi(Build.VERSION_CODES.O)
+//@Preview()
+//@Composable
+//private fun HalamanUbahStatusTokoPreview() {
+//    StatusToko(Modifier)
+//}
