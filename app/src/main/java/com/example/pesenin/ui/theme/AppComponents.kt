@@ -43,7 +43,27 @@ fun TopBar() {
 }
 
 @Composable
-fun BottomBar() {
+fun BottomBar(active : Int) {
+    var home =0
+    var food =1
+    var profile=2
+    when (active) {
+        1 -> {
+            home = R.drawable.homeactive
+            food = R.drawable.foodinactive
+            profile = R.drawable.profileinactive
+        }
+        2 -> {
+            home = R.drawable.homeinactive
+            food = R.drawable.foodactive
+            profile = R.drawable.profileinactive
+        }
+        3 -> {
+            home = R.drawable.homeinactive
+            food = R.drawable.foodinactive
+            profile = R.drawable.profileactive
+        }
+    }
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(horizontal = 32.dp, vertical = 16.dp),
@@ -52,7 +72,7 @@ fun BottomBar() {
     )
     {
         Image(
-            painter = painterResource(id = R.drawable.materialsymbolshomeoutline),
+            painter = painterResource(id = home),
             contentDescription = "Home",
             modifier = Modifier
                 .size(24.dp)
@@ -61,7 +81,7 @@ fun BottomBar() {
                 }
         )
         Image(
-            painter = painterResource(id = R.drawable.mdicardsheartoutline),
+            painter = painterResource(id = food),
             contentDescription = "Menu",
             modifier = Modifier
                 .size(24.dp)
@@ -70,7 +90,7 @@ fun BottomBar() {
                 }
         )
         Image(
-            painter = painterResource(id = R.drawable.icoutlineaccountcircle),
+            painter = painterResource(id = profile),
             contentDescription = "Profile",
             modifier = Modifier
                 .size(24.dp)
@@ -82,7 +102,27 @@ fun BottomBar() {
 }
 
 @Composable
-fun BottomBarKantin() {
+fun BottomBarKantin(active: Int) {
+    var home =0
+    var list =1
+    var food =2
+    when (active) {
+        1 -> {
+            home = R.drawable.homeactiveblue
+            list = R.drawable.listinactive
+            food = R.drawable.foodinactiveblue
+        }
+        2 -> {
+            home = R.drawable.homeinactive
+            list = R.drawable.listactive
+            food = R.drawable.foodinactiveblue
+        }
+        3 -> {
+            home = R.drawable.homeinactive
+            list = R.drawable.listinactive
+            food = R.drawable.foodactiveblue
+        }
+    }
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(horizontal = 32.dp, vertical = 16.dp),
@@ -91,7 +131,7 @@ fun BottomBarKantin() {
     )
     {
         Image(
-            painter = painterResource(id = R.drawable.materialsymbolshomeoutline),
+            painter = painterResource(id = home),
             contentDescription = "Home",
             modifier = Modifier
                 .size(24.dp)
@@ -100,7 +140,7 @@ fun BottomBarKantin() {
                 }
         )
         Image(
-            painter = painterResource(id = R.drawable.list),
+            painter = painterResource(id = list),
             contentDescription = "Order",
             modifier = Modifier
                 .size(24.dp)
@@ -109,7 +149,7 @@ fun BottomBarKantin() {
                 }
         )
         Image(
-            painter = painterResource(id = R.drawable.mdifoodoutline),
+            painter = painterResource(id = food),
             contentDescription = "Menu",
             modifier = Modifier
                 .size(24.dp)
@@ -130,11 +170,11 @@ fun TopBarPreview() {
 @Preview(showBackground = true)
 @Composable
 fun BottomBarPreview() {
-    BottomBar()
+    BottomBar(3)
 }
 
 @Preview(showBackground = true)
 @Composable
 fun BottomBarKantinPreview() {
-    BottomBarKantin()
+    BottomBarKantin(3)
 }
