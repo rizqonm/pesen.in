@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.TopBar
 
@@ -118,7 +119,15 @@ fun HalamanPembayaran3(navController: NavHostController) {
             verticalArrangement = Arrangement.Bottom
         ){
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate(HomeRoutes.Status.name) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) { saveState = true }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),

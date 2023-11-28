@@ -14,17 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanStatusPesanan(modifier: Modifier = Modifier, value:Int) {
+fun HalamanStatusPesanan(value:Int) {
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -84,13 +82,13 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier, value:Int) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            BottomBar(1)
+//            BottomBar(1)
         }
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanStatusPesananPreview() {
-    HalamanStatusPesanan(Modifier, 1)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanStatusPesananPreview() {
+//    HalamanStatusPesanan(Modifier, 1)
+//}

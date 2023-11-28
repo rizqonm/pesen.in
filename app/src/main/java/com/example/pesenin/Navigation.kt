@@ -24,6 +24,7 @@ import com.example.pesenin.ui.screens.pesan.HalamanPembayaran2
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran3
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan2
+import com.example.pesenin.ui.screens.pesan.HalamanStatusPesanan
 import com.example.pesenin.ui.screens.profile.ProfileScreen
 import com.example.pesenin.ui.screens.profile.ProfileViewModel
 
@@ -38,7 +39,8 @@ enum class HomeRoutes{
     Pesanan2,
     Bayar1,
     Bayar2,
-    Bayar3
+    Bayar3,
+    Status
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -114,6 +116,7 @@ fun Navigation(
             composable(HomeRoutes.Bayar1.name) { HalamanPembayaran(navController) }
             composable(HomeRoutes.Bayar2.name) { HalamanPembayaran2(navController) }
             composable(HomeRoutes.Bayar3.name) { HalamanPembayaran3(navController) }
+            composable(HomeRoutes.Status.name) { HalamanStatusPesanan(1)}
         }
     }
 }

@@ -14,4 +14,7 @@ sealed class NavItem {
 
     object Profile :
         Item(path = NavPath.PROFILE.toString(), icon = Icons.Outlined.AccountCircle)
+
+    object Status :
+        Item(path = NavPath.STATUS.toString(), icon = Icons.Outlined.Restaurant)
 }

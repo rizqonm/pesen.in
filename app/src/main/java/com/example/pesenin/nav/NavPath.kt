@@ -1,5 +1,5 @@
 package com.example.pesenin.nav
 
 enum class NavPath {
-    HOME, RESTAURANT, PROFILE
+    HOME, RESTAURANT, PROFILE, STATUS
 }

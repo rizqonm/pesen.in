@@ -41,7 +41,9 @@ fun BottomNavigationBar(navController: NavHostController) {
                     unselectedTextColor = Color.Transparent,
                     indicatorColor = Color.White
                 ),
-                icon = { Icon(imageVector = item.icon, contentDescription = "") },
+                icon = {
+                    Icon(imageVector = item.icon, contentDescription = "")
+                       },
                 label = { },
                 selected = item.path == currentDestination?.route,
                 onClick = {
