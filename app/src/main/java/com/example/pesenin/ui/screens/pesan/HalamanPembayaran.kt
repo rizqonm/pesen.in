@@ -1,6 +1,6 @@
 package com.example.pesenin.ui.screens.pesan
 
-import  androidx.compose.foundation.Image
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,18 +28,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanPembayaran(modifier: Modifier = Modifier) {
+fun HalamanPembayaran(navController: NavHostController) {
 //    var pesan1 by remember { mutableIntStateOf(0) }
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -152,7 +153,7 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
                     x = 10.dp,
                     y = 330.dp
                 )
-                .requiredWidth(width = 360.dp)
+                .requiredWidth(width = 338.dp)
                 .requiredHeight(height = 50.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
                 .background(color = Color(0xFFD6DCE4))
@@ -167,7 +168,7 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
         Row(
             modifier = Modifier
                 .align(Alignment.Center)
-                .offset(y = 100.dp)
+                .offset(y = 130.dp)
                 .padding(horizontal = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(112.dp),
@@ -176,7 +177,7 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.qrpembayaran),
                 contentDescription = "QRPembayaran",
                 modifier = Modifier
-                    .size(208.dp, 221.dp)
+                    .size(150.dp, 290.dp)
             )
         }
     }
@@ -192,7 +193,7 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(18.dp),
             horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Top
+//            verticalArrangement = Arrangement.Top
         ) {
             Row(
                 modifier = Modifier
@@ -220,15 +221,23 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
             }
         }
         Button(
-            onClick = { },
+            onClick = {
+                navController.navigate(HomeRoutes.Bayar2.name) {
+                    navController.graph.startDestinationRoute?.let { route ->
+                        popUpTo(route) { saveState = true }
+                    }
+                    launchSingleTop = true
+                    restoreState = true
+                }
+            },
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-            modifier = modifier
+            modifier = Modifier
                 .requiredWidth(width = 350.dp)
         ) {
             Text(
-                text = "Pesan Sekarang",
+                text = "Unggah Bukti Pembayaran",
                 color = Color.White,
                 style = TextStyle(
                     fontSize = 18.sp,
@@ -240,8 +249,8 @@ fun HalamanPembayaran(modifier: Modifier = Modifier) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPembayaranPreview() {
-    HalamanPembayaran(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPembayaranPreview() {
+//    HalamanPembayaran(Modifier)
+//}

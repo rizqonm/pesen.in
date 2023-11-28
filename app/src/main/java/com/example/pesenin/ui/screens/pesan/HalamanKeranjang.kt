@@ -20,19 +20,24 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 
 @Composable
-fun HalamanKeranjang(modifier: Modifier = Modifier){
+fun HalamanKeranjang(navController: NavHostController){
     var jumlah1 by remember { mutableIntStateOf(0) }
 
     Column(
@@ -69,7 +74,8 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 128.dp)
+//                        .requiredWidth(width = 128.dp)
+                        .requiredWidth(width = 100.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -98,9 +104,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row(
-
-                        ) {
+                        Row {
                             Text(
                                 text = "Rp 10.000",
                                 color = Color(0xff70787d),
@@ -150,10 +154,104 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                     }
                 }
             }
+//            Divider(
+//                color = Color(0xff101010),
+//                modifier = Modifier
+//                    .requiredWidth(width = 360.dp))
+//
+//            Row(
+//                verticalAlignment = Alignment.CenterVertically,
+//                modifier = Modifier
+//                    .padding(16.dp)
+//                    .height(100.dp)
+//            ) {
+//                Box(
+//                    modifier = Modifier
+//                        .requiredWidth(width = 128.dp)
+//                        .fillMaxHeight()
+//                        .clip(shape = RoundedCornerShape(6.dp))
+//                        .background(color = Color(0xFF70787D)))
+//                Column(
+//                    verticalArrangement = Arrangement.Top,
+//                    modifier = Modifier
+//                        .padding(start = 10.dp)
+//                        .fillMaxHeight()
+//                ){
+//                    Text(
+//                        text = "X",
+//                        modifier = Modifier
+//                            .fillMaxWidth()
+//                            .wrapContentHeight()
+//                            .padding(start = 200.dp)
+//                    )
+//                    Column(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .padding(top = 10.dp)
+//                    ) {
+//                        Text(
+//                            text = "Lalapan Jamur",
+//                            color = Color(0xff101010),
+//                            style = TextStyle(
+//                                fontSize = 15.sp,
+//                                fontWeight = FontWeight.Medium),
+//                        )
+//                        Row(
+//
+//                        ) {
+//                            Text(
+//                                text = "Rp 10.000",
+//                                color = Color(0xff70787d),
+//                                style = TextStyle(
+//                                    fontSize = 15.sp,
+//                                    fontWeight = FontWeight.Medium),
+//                            )
+//                            Row(
+//                                horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+//                                modifier = Modifier
+//                                    .padding(start = 40.dp)
+//                                    .padding(top = 10.dp)
+//                            ) {
+//                                Button(
+//                                    onClick = { jumlah1-- },
+//                                    shape = CircleShape,
+//                                    modifier = Modifier
+//                                        .size(25.dp),
+//                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+//                                ) {
+//                                    Text(
+//                                        text = "-",
+//                                        color = Color.White,
+//                                        fontSize = 4.sp
+//                                    )
+//                                }
+//                                Text(
+//                                    text = jumlah1.toString(),
+//                                    color = Color(0xff101010),
+//                                    style = TextStyle(
+//                                        fontSize = 15.sp))
+//                                Button(
+//                                    onClick = { jumlah1++ },
+//                                    shape = CircleShape,
+//                                    modifier = Modifier
+//                                        .size(25.dp),
+//                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+//                                ) {
+//                                    Text(
+//                                        text = "+",
+//                                        color = Color.White,
+//                                        fontSize = 4.sp
+//                                    )
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            }
             Divider(
                 color = Color(0xff101010),
                 modifier = Modifier
-                    .requiredWidth(width = 360.dp))
+                    .requiredWidth(width = 350.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -163,7 +261,8 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 128.dp)
+//                        .requiredWidth(width = 128.dp)
+                        .requiredWidth(width = 100.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -192,9 +291,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row(
-
-                        ) {
+                        Row {
                             Text(
                                 text = "Rp 10.000",
                                 color = Color(0xff70787d),
@@ -257,7 +354,8 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
             ) {
                 Box(
                     modifier = Modifier
-                        .requiredWidth(width = 128.dp)
+//                        .requiredWidth(width = 128.dp)
+                        .requiredWidth(width = 100.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -286,103 +384,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row(
-
-                        ) {
-                            Text(
-                                text = "Rp 10.000",
-                                color = Color(0xff70787d),
-                                style = TextStyle(
-                                    fontSize = 15.sp,
-                                    fontWeight = FontWeight.Medium),
-                            )
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
-                                modifier = Modifier
-                                    .padding(start = 40.dp)
-                                    .padding(top = 10.dp)
-                            ) {
-                                Button(
-                                    onClick = { jumlah1-- },
-                                    shape = CircleShape,
-                                    modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
-                                ) {
-                                    Text(
-                                        text = "-",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
-                                }
-                                Text(
-                                    text = jumlah1.toString(),
-                                    color = Color(0xff101010),
-                                    style = TextStyle(
-                                        fontSize = 15.sp))
-                                Button(
-                                    onClick = { jumlah1++ },
-                                    shape = CircleShape,
-                                    modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
-                                ) {
-                                    Text(
-                                        text = "+",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            Divider(
-                color = Color(0xff101010),
-                modifier = Modifier
-                    .requiredWidth(width = 350.dp))
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(16.dp)
-                    .height(100.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredWidth(width = 128.dp)
-                        .fillMaxHeight()
-                        .clip(shape = RoundedCornerShape(6.dp))
-                        .background(color = Color(0xFF70787D)))
-                Column(
-                    verticalArrangement = Arrangement.Top,
-                    modifier = Modifier
-                        .padding(start = 10.dp)
-                        .fillMaxHeight()
-                ){
-                    Text(
-                        text = "X",
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(start = 200.dp)
-                    )
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 10.dp)
-                    ) {
-                        Text(
-                            text = "Lalapan Jamur",
-                            color = Color(0xff101010),
-                            style = TextStyle(
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight.Medium),
-                        )
-                        Row(
-
-                        ) {
+                        Row {
                             Text(
                                 text = "Rp 10.000",
                                 color = Color(0xff70787d),
@@ -472,7 +474,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0C7E9)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = modifier
+                    modifier = Modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -485,11 +487,19 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
 
                 }
                 Button(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(HomeRoutes.Pesanan2.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = modifier
+                    modifier = Modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -505,8 +515,8 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanKeranjangPreview() {
-    HalamanKeranjang(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanKeranjangPreview() {
+//    HalamanKeranjang(navController)
+//}

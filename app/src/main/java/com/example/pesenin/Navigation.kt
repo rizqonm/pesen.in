@@ -19,7 +19,12 @@ import com.example.pesenin.ui.screens.homeScreen.Home
 import com.example.pesenin.ui.screens.loginScreen.LoginScreen
 import com.example.pesenin.ui.screens.loginScreen.LoginViewModel
 import com.example.pesenin.ui.screens.loginScreen.SignUpScreen
-import com.example.pesenin.ui.screens.menukantin.MenuKantin
+import com.example.pesenin.ui.screens.pesan.HalamanKeranjang
+import com.example.pesenin.ui.screens.pesan.HalamanPembayaran
+import com.example.pesenin.ui.screens.pesan.HalamanPembayaran2
+import com.example.pesenin.ui.screens.pesan.HalamanPembayaran3
+import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan
+import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan2
 
 enum class LoginRoutes{
     SignUp,
@@ -28,6 +33,11 @@ enum class LoginRoutes{
 
 enum class HomeRoutes{
     Home,
+    Bucket,
+    Pesanan2,
+    Bayar1,
+    Bayar2,
+    Bayar3
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -43,7 +53,14 @@ fun Navigation(
         modifier = Modifier.fillMaxWidth(),
         bottomBar =
         {
-            if (currentDestination?.route != LoginRoutes.SignIn.name && currentDestination?.route != LoginRoutes.SignUp.name) {
+            if (currentDestination?.route != LoginRoutes.SignIn.name
+                && currentDestination?.route != LoginRoutes.SignUp.name
+                && currentDestination?.route != HomeRoutes.Bucket.name
+                && currentDestination?.route != HomeRoutes.Pesanan2.name
+                && currentDestination?.route != HomeRoutes.Bayar1.name
+                && currentDestination?.route != HomeRoutes.Bayar2.name
+                && currentDestination?.route != HomeRoutes.Bayar3.name
+                ) {
                 BottomNavigationBar(navController = navController)
             }
         }
@@ -89,8 +106,13 @@ fun Navigation(
             }
 
             composable(NavItem.Home.path) { Home(loginViewModel = LoginViewModel(), navController) }
-            composable(NavItem.Restaurant.path) { MenuKantin() }
+            composable(NavItem.Restaurant.path) { HalamanPilihPesanan(navController) }
             composable(NavItem.Profile.path) { LihatDaftarMenu() }
+            composable(HomeRoutes.Bucket.name) { HalamanKeranjang(navController) }
+            composable(HomeRoutes.Pesanan2.name) { HalamanPilihPesanan2(navController)}
+            composable(HomeRoutes.Bayar1.name) { HalamanPembayaran(navController) }
+            composable(HomeRoutes.Bayar2.name) { HalamanPembayaran2(navController) }
+            composable(HomeRoutes.Bayar3.name) { HalamanPembayaran3() }
         }
     }
 }

@@ -36,20 +36,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
-import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
+fun HalamanPilihPesanan(navController: NavHostController) {
     var pesan1 by remember { mutableIntStateOf(0) }
     var pesan2 by remember { mutableIntStateOf(0) }
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -310,8 +310,8 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(
-                    x = 320.dp,
-                    y = 720.dp
+                    x = 300.dp,
+                    y = 600.dp
                 )
                 .requiredSize(size = 45.dp)
         ) {
@@ -324,6 +324,13 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
             ) {
                 Button(
                     onClick = {
+                        navController.navigate(HomeRoutes.Bucket.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
                     },
                     shape = RoundedCornerShape(8.dp),
                     modifier = Modifier
@@ -338,26 +345,32 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                         modifier = Modifier
                             .size(40.dp)
                             .clickable {
-
+                                navController.navigate(HomeRoutes.Bucket.name) {
+                                    navController.graph.startDestinationRoute?.let { route ->
+                                        popUpTo(route) { saveState = true }
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
                             }
                     )
                 }
             }
         }
-        Row(
-            modifier = Modifier
-                .align(alignment = Alignment.BottomStart)
-                .background(color = Color.White)
-                .fillMaxWidth()
-        ){
-            BottomBar(132)
-        }
+//        Row(
+//            modifier = Modifier
+//                .align(alignment = Alignment.BottomStart)
+//                .background(color = Color.White)
+//                .fillMaxWidth()
+//        ){
+////            BottomBar(132)
+//        }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPilihPesananPreview() {
-    HalamanPilihPesanan(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPilihPesananPreview() {
+//    HalamanPilihPesanan(Modifier)
+//}

@@ -28,16 +28,16 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
-import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
-
+fun HalamanPilihPesanan2(navController: NavHostController) {
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -84,7 +84,8 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                         x = 10.dp,
                         y = 20.dp
                     )
-                    .requiredWidth(width = 372.dp)
+//                    .requiredWidth(width = 372.dp)
+                    .requiredWidth(width = 338.dp)
                     .requiredHeight(height = 152.dp)
                     .clip(shape = RoundedCornerShape(12.dp))
                     .background(color = Color.White)
@@ -221,7 +222,15 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
 
             ) {
                 Button(
-                    onClick = {},
+                    onClick = {
+                        navController.navigate(HomeRoutes.Bayar1.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFC7B33)),
                     shape = RoundedCornerShape(size = 8.dp),
                     modifier = Modifier
@@ -248,7 +257,7 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                 .background(color = Color.White)
                 .fillMaxWidth()
         ){
-            BottomBar(1)
+//            BottomBar(1)
         }
     }
 }

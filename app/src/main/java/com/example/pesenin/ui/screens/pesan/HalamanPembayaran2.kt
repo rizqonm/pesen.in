@@ -1,6 +1,6 @@
 package com.example.pesenin.ui.screens.pesan
 
-import  androidx.compose.foundation.Image
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,18 +25,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanPembayaran2(modifier: Modifier = Modifier) {
+fun HalamanPembayaran2(navController: NavHostController) {
 //    var pesan1 by remember { mutableIntStateOf(0) }
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -78,7 +79,7 @@ fun HalamanPembayaran2(modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.buktipembayaran),
                 contentDescription = "BuktiPembayaran",
                 modifier = Modifier
-                    .size(207.dp, 499.dp)
+                    .size(207.dp, 450.dp)
             )
         }
         Column(
@@ -94,7 +95,7 @@ fun HalamanPembayaran2(modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0C7E9)),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                modifier = modifier
+                modifier = Modifier
                     .requiredWidth(width = 350.dp)
             ) {
                 Text(
@@ -107,11 +108,19 @@ fun HalamanPembayaran2(modifier: Modifier = Modifier) {
 
             }
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate(HomeRoutes.Bayar3.name) {
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) { saveState = true }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                modifier = modifier
+                modifier = Modifier
                     .requiredWidth(width = 350.dp)
             ) {
                 Text(
@@ -127,8 +136,8 @@ fun HalamanPembayaran2(modifier: Modifier = Modifier) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPembayaran2Preview() {
-    HalamanPembayaran2(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPembayaran2Preview() {
+//    HalamanPembayaran2(Modifier)
+//}

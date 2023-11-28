@@ -1,6 +1,6 @@
 package com.example.pesenin.ui.screens.pesan
 
-import  androidx.compose.foundation.Image
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,25 +25,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.pesenin.R
-import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanPembayaran3(modifier: Modifier = Modifier) {
+fun HalamanPembayaran3(navController: NavHostController) {
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
         Box(
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
-                .padding(horizontal = 8.dp, vertical = 16.dp)
+                .padding(horizontal = 0.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
             TopBar(true)
@@ -52,7 +51,7 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(
-                    x = 10.dp,
+                    x = 0.dp,
                     y = 84.dp
                 )
         ) {
@@ -70,7 +69,7 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .align(alignment = Alignment.TopStart)
                 .offset(
-                    x = 5.dp,
+                    x = 0.dp,
                     y = 155.dp
                 )
         ) {
@@ -85,14 +84,14 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
             )
             Text(
-                text = "Kami akan memberikan informasi kapan makanan anda siap!",
+                text = "Kami akan memberikan informasi \nkapan makanan anda siap!",
                 color = Color.Black,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Normal,
-                textAlign = TextAlign.Start,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .offset(x= 15.dp,y= 80.dp)
+                    .offset(x= 5.dp,y= 80.dp)
             )
         }
         Row(
@@ -113,7 +112,7 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .offset(y= (-65).dp)
+//                .offset(y= (-65).dp)
                 .padding(18.dp),
             horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.Bottom
@@ -123,8 +122,9 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                modifier = modifier
-                    .requiredWidth(width = 350.dp)
+                modifier = Modifier
+                    .requiredWidth(width = 350.dp),
+//                verticalArrangement = Arrangement.Bottom
             ) {
                 Text(
                     text = "Konfirmasi Pembayaran",
@@ -141,14 +141,14 @@ fun HalamanPembayaran3(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            BottomBar(1)
+//            BottomBar(1)
         }
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPembayaran3Preview() {
-    HalamanPembayaran3(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPembayaran3Preview() {
+//    HalamanPembayaran3(Modifier)
+//}
