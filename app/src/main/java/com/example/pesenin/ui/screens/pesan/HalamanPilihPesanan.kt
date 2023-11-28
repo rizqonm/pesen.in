@@ -311,7 +311,7 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .align(alignment = Alignment.TopStart)
                 .offset(
                     x = 320.dp,
-                    y = 720.dp
+                    y = 600.dp
                 )
                 .requiredSize(size = 45.dp)
         ) {
@@ -344,19 +344,19 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Row(
-            modifier = Modifier
-                .align(alignment = Alignment.BottomStart)
-                .background(color = Color.White)
-                .fillMaxWidth()
-        ){
-            BottomBar(132)
-        }
+//        Row(
+//            modifier = Modifier
+//                .align(alignment = Alignment.BottomStart)
+//                .background(color = Color.White)
+//                .fillMaxWidth()
+//        ){
+//            BottomBar(132)
+//        }
     }
 }
 
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, )
 @Composable
 private fun HalamanPilihPesananPreview() {
     HalamanPilihPesanan(Modifier)
