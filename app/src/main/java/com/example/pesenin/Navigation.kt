@@ -20,6 +20,8 @@ import com.example.pesenin.ui.screens.loginScreen.LoginScreen
 import com.example.pesenin.ui.screens.loginScreen.LoginViewModel
 import com.example.pesenin.ui.screens.loginScreen.SignUpScreen
 import com.example.pesenin.ui.screens.menukantin.MenuKantin
+import com.example.pesenin.ui.screens.profile.ProfileScreen
+import com.example.pesenin.ui.screens.profile.ProfileViewModel
 
 enum class LoginRoutes{
     SignUp,
@@ -90,7 +92,7 @@ fun Navigation(
 
             composable(NavItem.Home.path) { Home(loginViewModel = LoginViewModel(), navController) }
             composable(NavItem.Restaurant.path) { MenuKantin() }
-            composable(NavItem.Profile.path) { LihatDaftarMenu() }
+            composable(NavItem.Profile.path) { ProfileScreen(profileViewModel = ProfileViewModel(), navController) }
         }
     }
 }
