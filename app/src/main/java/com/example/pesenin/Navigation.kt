@@ -15,11 +15,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.pesenin.nav.NavItem
 import com.example.pesenin.ui.screens.BottomNavigationBar
 import com.example.pesenin.ui.screens.LihatDaftarMenu
-import com.example.pesenin.ui.screens.MenuKantin
 import com.example.pesenin.ui.screens.homeScreen.Home
 import com.example.pesenin.ui.screens.loginScreen.LoginScreen
 import com.example.pesenin.ui.screens.loginScreen.LoginViewModel
 import com.example.pesenin.ui.screens.loginScreen.SignUpScreen
+import com.example.pesenin.ui.screens.menukantin.MenuKantin
 
 enum class LoginRoutes{
     SignUp,
@@ -85,7 +85,7 @@ fun Navigation(
                 }
             }
 
-            composable(route = HomeRoutes.Home.name){
+            composable(route = NavItem.Home.path){
                 Home(loginViewModel = loginViewModel, navController)
             }
 
