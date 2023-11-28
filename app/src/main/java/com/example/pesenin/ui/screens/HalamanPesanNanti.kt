@@ -66,7 +66,7 @@ fun HalamanPesanNanti(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            TopBar()
+            TopBar(true)
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
