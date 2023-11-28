@@ -32,10 +32,10 @@ import androidx.compose.ui.unit.sp
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
+
 
     Box(
         modifier = modifier
@@ -243,13 +243,13 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Box(
+        Row(
             modifier = Modifier
                 .align(alignment = Alignment.BottomStart)
-                .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
+                .fillMaxWidth()
         ){
-            BottomBar()
+            BottomBar(2)
         }
     }
 }

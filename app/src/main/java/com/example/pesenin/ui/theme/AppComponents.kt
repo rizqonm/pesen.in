@@ -66,7 +66,7 @@ fun BottomBar(active : Int) {
     }
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 32.dp, vertical = 16.dp),
+        .padding(horizontal = 48.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     )
@@ -125,7 +125,7 @@ fun BottomBarKantin(active: Int) {
     }
     Row(modifier = Modifier
         .fillMaxWidth()
-        .padding(horizontal = 32.dp, vertical = 16.dp),
+        .padding(horizontal = 48.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     )
