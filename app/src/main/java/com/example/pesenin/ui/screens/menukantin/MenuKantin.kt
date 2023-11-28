@@ -32,11 +32,9 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pesenin.R
-import com.example.pesenin.ui.theme.BottomBarKantin
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
@@ -77,8 +75,8 @@ fun MenuKantin(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.weight(1.0f))
             Box(
                 modifier = Modifier
-                    .requiredWidth(width = 106.dp)
-                    .requiredHeight(height = 25.dp)
+                    .requiredWidth(width = 120.dp)
+                    .requiredHeight(height = 27.dp)
                     .clip(shape = RoundedCornerShape(5.dp))
                     .background(color = Color(0xff3a62a0))
             ) {
@@ -86,12 +84,13 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                     onClick = {
                     },
                     shape = RoundedCornerShape(8.dp),
-                    modifier = Modifier
-                        .align(alignment = Alignment.TopCenter),
+                    modifier = Modifier.align(alignment = Alignment.TopStart).width(126.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
                 ){
-                    Text("+ Tambah Menu", color = Color.White, fontSize = 8.sp,
-                        modifier = Modifier.offset ( y=(-1).dp))
+                    Text("+ Tambah Menu", color = Color.White, fontSize = 9.sp,
+                        modifier =
+                        Modifier.
+                        offset(y=(0).dp))
                 }
             }
         }
@@ -120,7 +119,7 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .width(27.dp)
-                        .height(12.dp)
+                        .height(13.dp)
                 ){
                     Text(
                         text = "No",
@@ -138,7 +137,7 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .width(120.dp)
-                        .height(12.dp)
+                        .height(13.dp)
                 ){
                     Text(
                         text = "Nama",
@@ -156,7 +155,7 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .width(67.dp)
-                        .height(12.dp)
+                        .height(13.dp)
                 ){
                     Text(
                         text = "Harga",
@@ -174,7 +173,7 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
                         .width(140.dp)
-                        .height(12.dp)
+                        .height(13.dp)
                 ){
                     Text(
                         text = "Aksi",
@@ -387,15 +386,13 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                 .align(alignment = Alignment.BottomStart)
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
-        ){
-            BottomBarKantin(2)
-        }
+        ) {}
     }
 }
 
 
-@Preview(showBackground = true)
-@Composable
-private fun MenuKantinPreview() {
-    MenuKantin(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun MenuKantinPreview() {
+//    MenuKantin(Modifier)
+//}
