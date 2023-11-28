@@ -85,7 +85,8 @@ fun LihatDaftarMenu(modifier: Modifier = Modifier){
                 .background(Color.White)
                 .fillMaxWidth()
         ){
-            BottomBar(2)
+            BottomBar(1)
+
         }
     }
 }

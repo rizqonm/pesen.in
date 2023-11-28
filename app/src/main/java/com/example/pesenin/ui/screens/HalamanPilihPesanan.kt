@@ -350,7 +350,7 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .background(color = Color.White)
                 .fillMaxWidth()
         ){
-            BottomBar(32)
+            BottomBar(132)
         }
     }
 }
