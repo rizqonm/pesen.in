@@ -1,6 +1,8 @@
 package com.example.pesenin.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,10 +15,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -27,17 +33,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pesenin.R
 import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
 fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
     var pesan1 by remember { mutableIntStateOf(0) }
+    var pesan2 by remember { mutableIntStateOf(0) }
 
     Box(
         modifier = modifier
@@ -86,6 +95,7 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .fillMaxHeight()
                 .background(color = Color(0xfff4f5f9))
+                .verticalScroll(rememberScrollState())
         ) {
             Row( //Fragment Menu
                 horizontalArrangement = Arrangement.spacedBy(40.dp, Alignment.Start),
@@ -133,30 +143,33 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                             .requiredWidth(width = 120.dp)
                             .requiredHeight(height = 32.dp)
                     ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                        Box(
                             modifier = Modifier
                                 .requiredWidth(width = 28.dp)
                                 .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
+                                .clip(shape = RoundedCornerShape(5.dp))
+                                .background(color = Color(0xff3a62a0))
                         ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "-",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
+                            Button(
+                                onClick = {
+                                    if (pesan1>0) pesan1 -= 1
+                                },
+                                shape = RoundedCornerShape(8.dp),
+                                modifier = Modifier
+                                    .align(alignment = Alignment.TopCenter)
+                                    .offset(
+                                        x = 0.dp,
+                                        y = (-1).dp
+                                    )
+                                    .requiredWidth(width = 250.dp)
+                                    .requiredHeight(height = 250.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                            ){
+                                Text("-")
                             }
                         }
                         Text(
-                            text = "1",
+                            text = pesan1.toString(),
                             color = Color.Black,
                             style = TextStyle(
                                 fontSize = 13.sp,
@@ -164,26 +177,25 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .wrapContentHeight(align = Alignment.CenterVertically)
                                 .padding(vertical = 3.dp))
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                        Box(
                             modifier = Modifier
                                 .requiredWidth(width = 28.dp)
                                 .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
+                                .clip(shape = RoundedCornerShape(5.dp))
+                                .background(color = Color(0xff3a62a0))
                         ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "+",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
+                            Button(
+                                onClick = {
+                                    pesan1+=1
+                                },
+                                shape = RoundedCornerShape(8.dp),
+                                modifier = Modifier
+                                    .align(alignment = Alignment.TopCenter)
+                                    .requiredWidth(width = 250.dp)
+                                    .requiredHeight(height = 250.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                            ){
+                                Text("+")
                             }
                         }
                     }
@@ -235,16 +247,30 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                             .requiredWidth(width = 120.dp)
                             .requiredHeight(height = 32.dp)
                     ) {
-                        Button(
-                            onClick = { pesan1 -= 1 },
+                        Box(
                             modifier = Modifier
                                 .requiredWidth(width = 28.dp)
                                 .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
+                                .clip(shape = RoundedCornerShape(5.dp))
+                                .background(color = Color(0xff3a62a0))
                         ) {
-                            Text("-")
+                            Button(
+                                onClick = {
+                                    if (pesan2>0) pesan2 -= 1
+                                },
+                                shape = RoundedCornerShape(8.dp),
+                                modifier = Modifier
+                                    .align(alignment = Alignment.TopCenter)
+                                    .offset(
+                                        x = 0.dp,
+                                        y = (-1).dp
+                                    )
+                                    .requiredWidth(width = 250.dp)
+                                    .requiredHeight(height = 250.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                            ){
+                                Text("-")
+                            }
                         }
                         Text(
                             text = pesan1.toString(),
@@ -255,219 +281,25 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                             modifier = Modifier
                                 .wrapContentHeight(align = Alignment.CenterVertically)
                                 .padding(vertical = 3.dp))
-                        Button(
-                            onClick = { pesan1 += 1 },
+                        Box(
                             modifier = Modifier
                                 .requiredWidth(width = 28.dp)
                                 .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
+                                .clip(shape = RoundedCornerShape(5.dp))
+                                .background(color = Color(0xff3a62a0))
                         ) {
-                            Text("+")
-                        }
-                    }
-                }
-            }
-            Row( //Fragment Menu
-                horizontalArrangement = Arrangement.spacedBy(40.dp, Alignment.Start),
-                modifier = Modifier
-                    .offset(
-                        x = 10.dp,
-                        y = 60.dp
-                    )
-                    .requiredWidth(width = 360.dp)
-                    .requiredHeight(height = 115.dp)
-                    .clip(shape = RoundedCornerShape(12.dp))
-                    .background(color = Color.White)
-                    .padding(8.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredWidth(width = 148.dp)
-                        .requiredHeight(height = 100.dp)
-                        .clip(shape = RoundedCornerShape(6.dp))
-                        .background(color = Color(0xfff4f5f9)))
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(vertical = 6.dp)
-                ) {
-                    Text(
-                        text = "Rp10.000",
-                        color = Color(0xff2b5699),
-                        style = TextStyle(
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Medium))
-                    Text(
-                        text = "Lalapan Jamur ",
-                        color = Color.Black,
-                        style = TextStyle(
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Medium),
-                        modifier = Modifier
-                            .wrapContentHeight(align = Alignment.CenterVertically))
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .requiredWidth(width = 120.dp)
-                            .requiredHeight(height = 32.dp)
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .requiredWidth(width = 28.dp)
-                                .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "-",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
-                            }
-                        }
-                        Text(
-                            text = "1",
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Medium),
-                            modifier = Modifier
-                                .wrapContentHeight(align = Alignment.CenterVertically)
-                                .padding(vertical = 3.dp))
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .requiredWidth(width = 28.dp)
-                                .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "+",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
-                            }
-                        }
-                    }
-                }
-            }
-            Row( //Fragment Menu
-                horizontalArrangement = Arrangement.spacedBy(40.dp, Alignment.Start),
-                modifier = Modifier
-                    .offset(
-                        x = 10.dp,
-                        y = 80.dp
-                    )
-                    .requiredWidth(width = 360.dp)
-                    .requiredHeight(height = 115.dp)
-                    .clip(shape = RoundedCornerShape(12.dp))
-                    .background(color = Color.White)
-                    .padding(8.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .requiredWidth(width = 148.dp)
-                        .requiredHeight(height = 100.dp)
-                        .clip(shape = RoundedCornerShape(6.dp))
-                        .background(color = Color(0xfff4f5f9)))
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(vertical = 6.dp)
-                ) {
-                    Text(
-                        text = "Rp10.000",
-                        color = Color(0xff2b5699),
-                        style = TextStyle(
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Medium))
-                    Text(
-                        text = "Lalapan Jamur ",
-                        color = Color.Black,
-                        style = TextStyle(
-                            fontSize = 13.sp,
-                            fontWeight = FontWeight.Medium),
-                        modifier = Modifier
-                            .wrapContentHeight(align = Alignment.CenterVertically))
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(15.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .requiredWidth(width = 120.dp)
-                            .requiredHeight(height = 32.dp)
-                    ) {
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .requiredWidth(width = 28.dp)
-                                .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "-",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
-                            }
-                        }
-                        Text(
-                            text = "1",
-                            color = Color.Black,
-                            style = TextStyle(
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Medium),
-                            modifier = Modifier
-                                .wrapContentHeight(align = Alignment.CenterVertically)
-                                .padding(vertical = 3.dp))
-                        Column(
-                            verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier
-                                .requiredWidth(width = 28.dp)
-                                .requiredHeight(height = 25.dp)
-                                .clip(shape = RoundedCornerShape(6.dp))
-                                .background(color = Color(0xff2b5699))
-                                .padding(4.dp)
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp, Alignment.CenterHorizontally),
-                                verticalAlignment = Alignment.Bottom,
-                            ) {
-                                Text(
-                                    text = "+",
-                                    color = Color.White,
-                                    style = TextStyle(
-                                        fontSize = 12.sp,
-                                        fontWeight = FontWeight.Medium))
+                            Button(
+                                onClick = {
+                                    pesan2+=1
+                                },
+                                shape = RoundedCornerShape(8.dp),
+                                modifier = Modifier
+                                    .align(alignment = Alignment.TopCenter)
+                                    .requiredWidth(width = 250.dp)
+                                    .requiredHeight(height = 250.dp),
+                                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                            ){
+                                Text("+")
                             }
                         }
                     }
@@ -479,24 +311,46 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .align(alignment = Alignment.TopStart)
                 .offset(
                     x = 320.dp,
-                    y = 740.dp
+                    y = 720.dp
                 )
                 .requiredSize(size = 45.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
+                    .requiredWidth(width = 50.dp)
+                    .requiredHeight(height = 50.dp)
                     .clip(shape = CircleShape)
-                    .background(color = Color(0xfffc7b33))
-            )
+                    .background(color = Color(0xFFFC7B33))
+            ) {
+                Button(
+                    onClick = {
+                    },
+                    shape = RoundedCornerShape(8.dp),
+                    modifier = Modifier
+                        .align(alignment = Alignment.TopCenter)
+                        .requiredWidth(width = 250.dp)
+                        .requiredHeight(height = 250.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFC7B33))
+                ){
+                    Image(
+                        painter = painterResource(id = R.drawable.cartbtn),
+                        contentDescription = "Cart",
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clickable {
+
+                            }
+                    )
+                }
+            }
         }
-        Box(
+        Row(
             modifier = Modifier
                 .align(alignment = Alignment.BottomStart)
-                .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
+                .fillMaxWidth()
         ){
-            BottomBar(3)
+            BottomBar(32)
         }
     }
 }

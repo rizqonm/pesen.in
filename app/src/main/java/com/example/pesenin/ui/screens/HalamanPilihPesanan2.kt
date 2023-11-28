@@ -35,6 +35,7 @@ import com.example.pesenin.ui.theme.TopBar
 @Composable
 fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
 
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -241,13 +242,13 @@ fun HalamanPilihPesanan2(modifier: Modifier = Modifier) {
                 }
             }
         }
-        Box(
+        Row(
             modifier = Modifier
                 .align(alignment = Alignment.BottomStart)
-                .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
+                .fillMaxWidth()
         ){
-            BottomBar(3)
+            BottomBar(2)
         }
     }
 }
