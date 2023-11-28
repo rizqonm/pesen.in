@@ -20,6 +20,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -398,35 +399,39 @@ fun HalamanKeranjang(navController: NavHostController){
                                     .padding(start = 40.dp)
                                     .padding(top = 10.dp)
                             ) {
-                                Button(
-                                    onClick = { jumlah1-- },
+                                TextButton(
+                                    onClick = { /* Aksi ketika tombol diklik */ },
                                     shape = CircleShape,
                                     modifier = Modifier
                                         .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                    colors = ButtonDefaults.textButtonColors(Color(0xFF99999C))
                                 ) {
                                     Text(
                                         text = "-",
-                                        color = Color.White,
-                                        fontSize = 4.sp
+                                        fontSize = 16.sp,
+                                        color = Color.White
                                     )
                                 }
+
                                 Text(
                                     text = jumlah1.toString(),
                                     color = Color(0xff101010),
                                     style = TextStyle(
-                                        fontSize = 15.sp))
-                                Button(
-                                    onClick = { jumlah1++ },
+                                        fontSize = 15.sp
+                                    )
+                                )
+
+                                TextButton(
+                                    onClick = { /* Aksi ketika tombol diklik */ },
                                     shape = CircleShape,
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                        .size(25.dp)
+                                        .background(Color(0xFF99999C)),
+                                    colors = ButtonDefaults.textButtonColors(contentColor = Color.White)
                                 ) {
                                     Text(
                                         text = "+",
-                                        color = Color.White,
-                                        fontSize = 4.sp
+                                        fontSize = 10.sp
                                     )
                                 }
                             }

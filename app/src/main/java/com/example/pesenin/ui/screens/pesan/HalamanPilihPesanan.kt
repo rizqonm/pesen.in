@@ -363,7 +363,7 @@ fun HalamanPilihPesanan(navController: NavHostController) {
 //                .background(color = Color.White)
 //                .fillMaxWidth()
 //        ){
-////            BottomBar(132)
+//            BottomBar(132)
 //        }
     }
 }

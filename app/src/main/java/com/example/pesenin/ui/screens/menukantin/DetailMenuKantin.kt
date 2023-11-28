@@ -325,14 +325,14 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                                     fontWeight = FontWeight(400),
                                     color = Color(0xFF000000),
                                 ),
-                                trailingIcon = {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.dropdownarrow),
-                                        contentDescription = "arrow",
-                                        modifier = Modifier
-                                            .size(16.dp)
-                                    )
-                                }
+//                                trailingIcon = {
+//                                    Image(
+//                                        painter = painterResource(id = R.drawable.dropdownarrow),
+//                                        contentDescription = "arrow",
+//                                        modifier = Modifier
+//                                            .size(16.dp)
+//                                    )
+//                                }
                             )
                             ExposedDropdownMenu(
                                 expanded = expanded,
