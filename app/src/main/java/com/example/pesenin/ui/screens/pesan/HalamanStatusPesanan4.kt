@@ -1,31 +1,20 @@
-package com.example.pesenin.ui.screens
+package com.example.pesenin.ui.screens.pesan
 
 import  androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,7 +31,7 @@ import com.example.pesenin.ui.theme.BottomBar
 import com.example.pesenin.ui.theme.TopBar
 
 @Composable
-fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
+fun HalamanStatusPesanan4(modifier: Modifier = Modifier) {
 //    var pesan1 by remember { mutableIntStateOf(0) }
 
     Box(
@@ -56,11 +45,11 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            TopBar()
+            TopBar(true)
         }
         Box(
             modifier = Modifier
-                .align(alignment = Alignment.TopStart)
+                .align(alignment = Alignment.TopCenter)
                 .offset(
                     x = 10.dp,
                     y = 84.dp
@@ -79,21 +68,21 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
         Row(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .offset(y = 162.dp)
+                .offset(y = 150.dp)
                 .padding(horizontal = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(112.dp),
         ) {
             Image(
-                painter = painterResource(id = R.drawable.pesanandikonfirmasi),
+                painter = painterResource(id = R.drawable.pesananterkirim),
                 contentDescription = "BuktiPembayaran",
                 modifier = Modifier
-                    .size(105.dp, 133.dp)
+                    .size(188.dp, 131.dp)
             )
         }
         Box(
             modifier = Modifier
-                .offset(x = 22.dp, y = 330.dp)
+                .offset(x = 25.dp, y = 330.dp)
                 .requiredWidth(width = 348.dp)
                 .requiredHeight(height = 117.dp)
                 .clip(shape = RoundedCornerShape(12.dp))
@@ -102,18 +91,18 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
 
         ) {
             Text(
-                text = "Pesanan Dikonfirmasi",
+                text = "Terkirim",
                 color = Color.Black,
                 textAlign = TextAlign.Center,
                 style = TextStyle(fontSize = 17.sp),
                 modifier = Modifier
-                    .offset(x = 80.dp)
+                    .offset(x = 130.dp)
 //                    .fillMaxSize()
             )
             Row(
                 modifier = Modifier
 //                    .fillMaxWidth()
-                    .offset(y = 5.dp)
+                    .offset(x= 2.dp,y = 5.dp)
                     .align(Alignment.Center) // Align ke bawah dan di tengah
                     .padding(bottom = 10.dp) // Menambah jarak dari bawah
             ) {
@@ -125,7 +114,7 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
                         .align(Alignment.CenterVertically) // Align gambar di tengah vertikal
                 )
                 Text(
-                    text = " 25 mins",
+                    text = " - - -",
                     color = Color.Black,
                     textAlign = TextAlign.Center,
                     fontWeight = FontWeight.Normal,
@@ -137,13 +126,13 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
                 )
             }
             Text(
-                text = "Pesanan anda sedang disiapkan oleh penjual",
+                text = "Pesanan telah diambil",
                 color = Color.Black,
                 textAlign = TextAlign.Center,
                 style = TextStyle(fontSize = 12.sp),
                 modifier = Modifier
 //                    .fillMaxSize()
-                    .offset(x = 40.dp, y = 65.dp)
+                    .offset(x = 100.dp, y = 65.dp)
             )
         }
         Box(
@@ -159,6 +148,6 @@ fun HalamanStatusPesanan(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-private fun HalamanStatusPesananPreview() {
-    HalamanStatusPesanan(Modifier)
+private fun HalamanStatusPesanan4Preview() {
+    HalamanStatusPesanan4(Modifier)
 }

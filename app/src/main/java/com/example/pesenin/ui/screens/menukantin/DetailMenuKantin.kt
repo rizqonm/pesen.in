@@ -1,6 +1,7 @@
 package com.example.pesenin.ui.screens.menukantin
 
 
+import android.provider.CalendarContract.Colors
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -22,6 +24,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -72,7 +75,7 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            TopBar()
+            TopBar(true)
         }
         Row(
             verticalAlignment = Alignment.Bottom,
@@ -312,6 +315,24 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                                 modifier = Modifier
                                     .menuAnchor()
                                     .height(50.dp),
+                                colors = ExposedDropdownMenuDefaults.textFieldColors(
+                                    containerColor = Color(0xFFFFFFFF),
+                                ),
+                                textStyle = TextStyle(
+                                    fontSize = 10.sp,
+                                    lineHeight = 12.sp,
+                                    fontFamily = FontFamily(Font(R.font.poppins_regular)),
+                                    fontWeight = FontWeight(400),
+                                    color = Color(0xFF000000),
+                                ),
+                                trailingIcon = {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.dropdownarrow),
+                                        contentDescription = "arrow",
+                                        modifier = Modifier
+                                            .size(16.dp)
+                                    )
+                                }
                             )
                             ExposedDropdownMenu(
                                 expanded = expanded,
@@ -325,13 +346,14 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                                             lineHeight = 12.sp,
                                             fontFamily = FontFamily(Font(R.font.poppins_regular)),
                                             fontWeight = FontWeight(400),
-                                            color = Color(0xFF757373),
+                                            color = Color(0xFF000000),
                                         )
                                     ) },
                                     onClick = {
                                         selectedText = "Tersedia"
                                         expanded = false
                                     }
+
                                 )
                                 DropdownMenuItem(
                                     text = { Text(
@@ -341,7 +363,7 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                                             lineHeight = 12.sp,
                                             fontFamily = FontFamily(Font(R.font.poppins_regular)),
                                             fontWeight = FontWeight(400),
-                                            color = Color(0xFF757373),
+                                            color = Color(0xFF000000),
                                         )
                                     ) },
                                     onClick = {
@@ -350,6 +372,34 @@ fun DetailMenuKantin(modifier: Modifier = Modifier) {
                                     }
                                 )
                             }
+                        }
+                    }
+                }
+                Row (
+                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 12.dp)
+                ){
+                    Box(
+                        modifier = Modifier
+                            .requiredWidth(width = 106.dp)
+                            .requiredHeight(height = 25.dp)
+                            .clip(shape = RoundedCornerShape(5.dp))
+                            .background(color = Color(0xff3a62a0))
+                    ) {
+                        Button(
+                            onClick = {
+                            },
+                            shape = RoundedCornerShape(8.dp),
+                            modifier = Modifier
+                                .align(alignment = Alignment.TopCenter)
+                                .requiredWidth(150.dp)
+                                .requiredHeight(150.dp),
+
+                            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF3A62A0))
+                        ){
+                            Text("Simpan", color = Color.White, fontSize = 8.sp,modifier = Modifier.offset ( y=(-2).dp))
                         }
                     }
                 }

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.example.pesenin.R
 
 @Composable
-fun TopBar() {
+fun TopBar(back : Boolean) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(horizontal = 8.dp),
@@ -32,21 +32,24 @@ fun TopBar() {
                 .size(100.dp,50.dp)
         )
     }
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp, vertical = 12.dp)
-    ){
-        Image(
-            painter = painterResource(id = R.drawable.epback),
-            contentDescription = "Back",
+    if (back) {
+        Box(
             modifier = Modifier
-                .size(24.dp)
-                .clickable {
+                .fillMaxWidth()
+                .padding(horizontal = 8.dp, vertical = 12.dp)
+        ){
+            Image(
+                painter = painterResource(id = R.drawable.epback),
+                contentDescription = "Back",
+                modifier = Modifier
+                    .size(24.dp)
+                    .clickable {
 
-                }
-        )
+                    }
+            )
+        }
     }
+
 }
 
 @Composable
@@ -171,7 +174,7 @@ fun BottomBarKantin(active: Int) {
 @Preview(showBackground = true)
 @Composable
 fun TopBarPreview() {
-    TopBar()
+    TopBar(false)
 }
 
 @Preview(showBackground = true)

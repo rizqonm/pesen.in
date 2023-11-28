@@ -1,4 +1,4 @@
-package com.example.pesenin.ui.screens
+package com.example.pesenin.ui.screens.pesan
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -59,7 +59,7 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            TopBar()
+            TopBar(true)
         }
         Box(
             modifier = Modifier
@@ -356,8 +356,8 @@ fun HalamanPilihPesanan(modifier: Modifier = Modifier) {
 }
 
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun HalamanPilihPesananPreview() {
-//    HalamanPilihPesanan(Modifier)
-//}
+@Preview(showBackground = true)
+@Composable
+private fun HalamanPilihPesananPreview() {
+    HalamanPilihPesanan(Modifier)
+}
