@@ -5,7 +5,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -43,7 +42,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                     indicatorColor = Color.White
                 ),
                 icon = { Icon(imageVector = item.icon, contentDescription = "") },
-                label = { Text(text = "testing") },
+                label = { },
                 selected = item.path == currentDestination?.route,
                 onClick = {
                     navController.navigate(item.path) {

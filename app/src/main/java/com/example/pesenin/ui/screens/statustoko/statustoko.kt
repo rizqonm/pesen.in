@@ -341,8 +341,7 @@ fun StatusToko(modifier: Modifier = Modifier) {
         ) {
             Button(
                 onClick = {
-                    val logout = Firebase.auth.signOut()
-                    logout
+                    Firebase.auth.signOut()
                 },
                 modifier = Modifier
                     .requiredWidth(width = 328.dp)
