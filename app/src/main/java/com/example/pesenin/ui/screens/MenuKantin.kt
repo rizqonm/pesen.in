@@ -359,7 +359,7 @@ fun MenuKantin(modifier: Modifier = Modifier) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-            BottomBarKantin()
+            BottomBarKantin(1)
         }
     }
 }
