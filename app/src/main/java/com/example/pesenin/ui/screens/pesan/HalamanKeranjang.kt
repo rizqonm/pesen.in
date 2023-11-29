@@ -11,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,7 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -32,14 +31,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
-import com.example.pesenin.HomeRoutes
 
 @Composable
-fun HalamanKeranjang(navController: NavHostController){
-    var jumlah1 by remember { mutableIntStateOf(0) }
+fun HalamanKeranjang(modifier: Modifier = Modifier){
+    var jumlah1 by remember { mutableIntStateOf(2) }
+    var jumlah2 by remember { mutableIntStateOf(1) }
+    var jumlah3 by remember { mutableIntStateOf(1) }
 
     Column(
         modifier = Modifier
@@ -75,8 +75,7 @@ fun HalamanKeranjang(navController: NavHostController){
             ) {
                 Box(
                     modifier = Modifier
-//                        .requiredWidth(width = 128.dp)
-                        .requiredWidth(width = 100.dp)
+                        .requiredWidth(width = 128.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -99,15 +98,17 @@ fun HalamanKeranjang(navController: NavHostController){
                             .padding(top = 10.dp)
                     ) {
                         Text(
-                            text = "Lalapan Jamur",
+                            text = "Lalapan Ayam Krispi",
                             color = Color(0xff101010),
                             style = TextStyle(
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row {
+                        Row(
+
+                        ) {
                             Text(
-                                text = "Rp 10.000",
+                                text = "Rp 13.000",
                                 color = Color(0xff70787d),
                                 style = TextStyle(
                                     fontSize = 15.sp,
@@ -119,140 +120,70 @@ fun HalamanKeranjang(navController: NavHostController){
                                     .padding(start = 40.dp)
                                     .padding(top = 10.dp)
                             ) {
-                                Button(
-                                    onClick = { jumlah1-- },
-                                    shape = CircleShape,
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "-",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
+                                    Button(
+                                        onClick = {
+                                            if(jumlah1 > 0) jumlah1--;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("-")
+                                    }
                                 }
                                 Text(
                                     text = jumlah1.toString(),
                                     color = Color(0xff101010),
                                     style = TextStyle(
                                         fontSize = 15.sp))
-                                Button(
-                                    onClick = { jumlah1++ },
-                                    shape = CircleShape,
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "+",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
+                                    Button(
+                                        onClick = {
+                                            jumlah1++;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("+")
+                                    }
                                 }
                             }
                         }
                     }
                 }
             }
-//            Divider(
-//                color = Color(0xff101010),
-//                modifier = Modifier
-//                    .requiredWidth(width = 360.dp))
-//
-//            Row(
-//                verticalAlignment = Alignment.CenterVertically,
-//                modifier = Modifier
-//                    .padding(16.dp)
-//                    .height(100.dp)
-//            ) {
-//                Box(
-//                    modifier = Modifier
-//                        .requiredWidth(width = 128.dp)
-//                        .fillMaxHeight()
-//                        .clip(shape = RoundedCornerShape(6.dp))
-//                        .background(color = Color(0xFF70787D)))
-//                Column(
-//                    verticalArrangement = Arrangement.Top,
-//                    modifier = Modifier
-//                        .padding(start = 10.dp)
-//                        .fillMaxHeight()
-//                ){
-//                    Text(
-//                        text = "X",
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .wrapContentHeight()
-//                            .padding(start = 200.dp)
-//                    )
-//                    Column(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(top = 10.dp)
-//                    ) {
-//                        Text(
-//                            text = "Lalapan Jamur",
-//                            color = Color(0xff101010),
-//                            style = TextStyle(
-//                                fontSize = 15.sp,
-//                                fontWeight = FontWeight.Medium),
-//                        )
-//                        Row(
-//
-//                        ) {
-//                            Text(
-//                                text = "Rp 10.000",
-//                                color = Color(0xff70787d),
-//                                style = TextStyle(
-//                                    fontSize = 15.sp,
-//                                    fontWeight = FontWeight.Medium),
-//                            )
-//                            Row(
-//                                horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
-//                                modifier = Modifier
-//                                    .padding(start = 40.dp)
-//                                    .padding(top = 10.dp)
-//                            ) {
-//                                Button(
-//                                    onClick = { jumlah1-- },
-//                                    shape = CircleShape,
-//                                    modifier = Modifier
-//                                        .size(25.dp),
-//                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
-//                                ) {
-//                                    Text(
-//                                        text = "-",
-//                                        color = Color.White,
-//                                        fontSize = 4.sp
-//                                    )
-//                                }
-//                                Text(
-//                                    text = jumlah1.toString(),
-//                                    color = Color(0xff101010),
-//                                    style = TextStyle(
-//                                        fontSize = 15.sp))
-//                                Button(
-//                                    onClick = { jumlah1++ },
-//                                    shape = CircleShape,
-//                                    modifier = Modifier
-//                                        .size(25.dp),
-//                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
-//                                ) {
-//                                    Text(
-//                                        text = "+",
-//                                        color = Color.White,
-//                                        fontSize = 4.sp
-//                                    )
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
             Divider(
                 color = Color(0xff101010),
                 modifier = Modifier
-                    .requiredWidth(width = 350.dp))
+                    .requiredWidth(width = 360.dp))
 
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -262,8 +193,7 @@ fun HalamanKeranjang(navController: NavHostController){
             ) {
                 Box(
                     modifier = Modifier
-//                        .requiredWidth(width = 128.dp)
-                        .requiredWidth(width = 100.dp)
+                        .requiredWidth(width = 128.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -286,13 +216,15 @@ fun HalamanKeranjang(navController: NavHostController){
                             .padding(top = 10.dp)
                     ) {
                         Text(
-                            text = "Lalapan Jamur",
+                            text = "Lalapan Ayam Goreng",
                             color = Color(0xff101010),
                             style = TextStyle(
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row {
+                        Row(
+
+                        ) {
                             Text(
                                 text = "Rp 10.000",
                                 color = Color(0xff70787d),
@@ -306,36 +238,60 @@ fun HalamanKeranjang(navController: NavHostController){
                                     .padding(start = 40.dp)
                                     .padding(top = 10.dp)
                             ) {
-                                Button(
-                                    onClick = { jumlah1-- },
-                                    shape = CircleShape,
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "-",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
+                                    Button(
+                                        onClick = {
+                                            if(jumlah2 > 0) jumlah2--;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("-")
+                                    }
                                 }
                                 Text(
-                                    text = jumlah1.toString(),
+                                    text = jumlah2.toString(),
                                     color = Color(0xff101010),
                                     style = TextStyle(
                                         fontSize = 15.sp))
-                                Button(
-                                    onClick = { jumlah1++ },
-                                    shape = CircleShape,
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.buttonColors(Color(0xFF99999C))
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "+",
-                                        color = Color.White,
-                                        fontSize = 4.sp
-                                    )
+                                    Button(
+                                        onClick = {
+                                            jumlah2++;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("+")
+                                    }
                                 }
                             }
                         }
@@ -355,8 +311,7 @@ fun HalamanKeranjang(navController: NavHostController){
             ) {
                 Box(
                     modifier = Modifier
-//                        .requiredWidth(width = 128.dp)
-                        .requiredWidth(width = 100.dp)
+                        .requiredWidth(width = 128.dp)
                         .fillMaxHeight()
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xFF70787D)))
@@ -379,13 +334,15 @@ fun HalamanKeranjang(navController: NavHostController){
                             .padding(top = 10.dp)
                     ) {
                         Text(
-                            text = "Lalapan Jamur",
+                            text = "Lalapan Kulit Ayam",
                             color = Color(0xff101010),
                             style = TextStyle(
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium),
                         )
-                        Row {
+                        Row(
+
+                        ) {
                             Text(
                                 text = "Rp 10.000",
                                 color = Color(0xff70787d),
@@ -399,40 +356,60 @@ fun HalamanKeranjang(navController: NavHostController){
                                     .padding(start = 40.dp)
                                     .padding(top = 10.dp)
                             ) {
-                                TextButton(
-                                    onClick = { /* Aksi ketika tombol diklik */ },
-                                    shape = CircleShape,
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp),
-                                    colors = ButtonDefaults.textButtonColors(Color(0xFF99999C))
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "-",
-                                        fontSize = 16.sp,
-                                        color = Color.White
-                                    )
+                                    Button(
+                                        onClick = {
+                                            if(jumlah3 > 0) jumlah3--;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("-")
+                                    }
                                 }
-
                                 Text(
-                                    text = jumlah1.toString(),
+                                    text = jumlah3.toString(),
                                     color = Color(0xff101010),
                                     style = TextStyle(
-                                        fontSize = 15.sp
-                                    )
-                                )
-
-                                TextButton(
-                                    onClick = { /* Aksi ketika tombol diklik */ },
-                                    shape = CircleShape,
+                                        fontSize = 15.sp))
+                                Box(
                                     modifier = Modifier
-                                        .size(25.dp)
-                                        .background(Color(0xFF99999C)),
-                                    colors = ButtonDefaults.textButtonColors(contentColor = Color.White)
+                                        .requiredWidth(width = 25.dp)
+                                        .requiredHeight(height = 25.dp)
+                                        .clip(shape = CircleShape)
+                                        .background(color = Color(0xff3a62a0))
                                 ) {
-                                    Text(
-                                        text = "+",
-                                        fontSize = 10.sp
-                                    )
+                                    Button(
+                                        onClick = {
+                                            jumlah3++;
+                                        },
+                                        shape = CircleShape,
+                                        modifier = Modifier
+                                            .align(alignment = Alignment.Center)
+                                            .requiredWidth(width = 250.dp)
+                                            .requiredHeight(height = 250.dp),
+                                        colors = ButtonDefaults.buttonColors(
+                                            containerColor = Color(
+                                                0xFF3A62A0
+                                            )
+                                        )
+                                    ) {
+                                        Text("+")
+                                    }
                                 }
                             }
                         }
@@ -466,7 +443,7 @@ fun HalamanKeranjang(navController: NavHostController){
                             fontWeight = FontWeight.Medium),
                     )
                     Text(
-                        text = "Rp23.000",
+                        text = "Rp46.000",
                         color = Color(0xff70787d),
                         style = TextStyle(
                             fontSize = 15.sp,
@@ -479,7 +456,7 @@ fun HalamanKeranjang(navController: NavHostController){
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0C7E9)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = Modifier
+                    modifier = modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -492,19 +469,11 @@ fun HalamanKeranjang(navController: NavHostController){
 
                 }
                 Button(
-                    onClick = {
-                        navController.navigate(HomeRoutes.Pesanan2.name) {
-                            navController.graph.startDestinationRoute?.let { route ->
-                                popUpTo(route) { saveState = true }
-                            }
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
+                    onClick = { },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = Modifier
+                    modifier = modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -520,8 +489,8 @@ fun HalamanKeranjang(navController: NavHostController){
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun HalamanKeranjangPreview() {
-//    HalamanKeranjang(navController)
-//}
+@Preview(showBackground = true)
+@Composable
+private fun HalamanKeranjangPreview() {
+    HalamanKeranjang(Modifier)
+}

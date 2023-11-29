@@ -203,22 +203,22 @@ fun HalamanPesanNanti(modifier: Modifier = Modifier) {
                 Button(onClick = {
                     calenderState.show()
                 }) {
-                    Text(text = "Date Picker")
+                    Text(text = "Pilih Tanggal")
                 }
                 selectedDate.value?.let { date ->
                     Text(
-                        text = "Selected Date: $date",
+                        text = "Tanggal yang dipilih: $date",
                         modifier = Modifier.padding(8.dp)
                     )
                 }
                 Button(onClick = {
                     clockState.show()
                 }) {
-                    Text(text = "Time Picker")
+                    Text(text = "Pilih Waktu")
                 }
                 selectedTime.value?.let { time ->
                     Text(
-                        text = "Selected Time: $time",
+                        text = "Waktu yang dipilih : $time",
                         modifier = Modifier.padding(8.dp)
                     )
                 }
