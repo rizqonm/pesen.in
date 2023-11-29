@@ -174,14 +174,14 @@ class LoginViewModel(
                 }else{
                     Toast.makeText(
                         context,
-                        "Failed Login",
+                        "Username/password salah",
                         Toast.LENGTH_SHORT
                     ).show()
                     loginUiState = loginUiState.copy(isSuccessLogin = false)
                 }
             }
         }catch(e:Exception){
-            loginUiState = loginUiState.copy(loginError = e.localizedMessage)
+            loginUiState = loginUiState.copy(loginError = "Username/password salah")
             e.printStackTrace()
         }finally {
             loginUiState = loginUiState.copy(isLoading = false)
