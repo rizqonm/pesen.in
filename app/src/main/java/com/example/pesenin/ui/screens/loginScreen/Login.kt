@@ -270,8 +270,14 @@ fun LoginScreen(
     ) {
         if(isError){
             Text(
+<<<<<<< Updated upstream
                 text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
                 color = Color.Red,
+=======
+                text = loginUiState?.loginError ?: "Unknown error",
+                modifier = Modifier.background(color = Color.Red).fillMaxWidth(),
+                color = Color.White,
+>>>>>>> Stashed changes
             )
         }
         Column (modifier = Modifier
@@ -331,6 +337,7 @@ fun LoginScreen(
                     isError = isError
                 )
             }
+            var passwordVisible by remember { mutableStateOf(false) }
 
             Row (modifier = Modifier.padding(start = 21.dp, top = 22.dp, end = 21.dp)){
                 OutlinedTextField(
@@ -340,6 +347,14 @@ fun LoginScreen(
                     ,
                     value = loginUiState?.password ?: "",
                     onValueChange = {loginViewModel?.onPasswordChange(it)},
+                    visualTransformation = if (passwordVisible) {
+                        PasswordVisualTransformation()
+                    } else {
+                        PasswordVisualTransformation(mask = '*')
+                    },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Password
+                    ),
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Outlined.Lock,
@@ -766,8 +781,14 @@ fun SignUpScreen(
     ) {
         if (isError) {
             Text(
+<<<<<<< Updated upstream
                 text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
                 color = Color.Red,
+=======
+                text = loginUiState?.signUpError ?: "Unknown error",
+                modifier = Modifier.background(color = Color.Red).fillMaxWidth(),
+                color = Color.White,
+>>>>>>> Stashed changes
             )
         }
 
@@ -884,6 +905,9 @@ fun SignUpScreen(
                     isError = isError
                 )
 
+                var password1Visible by remember { mutableStateOf(false) }
+                var password2Visible by remember { mutableStateOf(false) }
+
                 OutlinedTextField(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -898,6 +922,14 @@ fun SignUpScreen(
                             contentDescription = null,
                         )
                     },
+                    visualTransformation = if (password1Visible) {
+                        PasswordVisualTransformation()
+                    } else {
+                        PasswordVisualTransformation(mask = '*')
+                    },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Password
+                    ),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         unfocusedBorderColor = Color(0xFFFFFFFF),
                     ),
@@ -919,6 +951,14 @@ fun SignUpScreen(
                     ,
                     value = loginUiState?.confirmPasswordSignUp ?: "",
                     onValueChange = {loginViewModel?.onConfirmPasswordChange(it)},
+                    visualTransformation = if (password2Visible) {
+                        PasswordVisualTransformation()
+                    } else {
+                        PasswordVisualTransformation(mask = '*')
+                    },
+                    keyboardOptions = KeyboardOptions.Default.copy(
+                        keyboardType = KeyboardType.Password
+                    ),
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Outlined.Lock,

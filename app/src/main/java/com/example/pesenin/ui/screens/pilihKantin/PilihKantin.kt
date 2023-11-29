@@ -130,8 +130,6 @@ fun LihatDaftarMenu(modifier: Modifier = Modifier, pilihKantinViewModel: PilihKa
                         .background(color = Color.White)
                         .padding(8.dp)
                 ) {
-
-
                     var urlPhoto: String by remember { mutableStateOf("") }
                     pilihKantinViewModel.GetStorePhoto(store.photo ?: "") { url ->
                         urlPhoto = url
