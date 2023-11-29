@@ -270,14 +270,9 @@ fun LoginScreen(
     ) {
         if(isError){
             Text(
-<<<<<<< Updated upstream
                 text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
-                color = Color.Red,
-=======
-                text = loginUiState?.loginError ?: "Unknown error",
                 modifier = Modifier.background(color = Color.Red).fillMaxWidth(),
                 color = Color.White,
->>>>>>> Stashed changes
             )
         }
         Column (modifier = Modifier
@@ -781,14 +776,9 @@ fun SignUpScreen(
     ) {
         if (isError) {
             Text(
-<<<<<<< Updated upstream
                 text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
-                color = Color.Red,
-=======
-                text = loginUiState?.signUpError ?: "Unknown error",
                 modifier = Modifier.background(color = Color.Red).fillMaxWidth(),
                 color = Color.White,
->>>>>>> Stashed changes
             )
         }
 
