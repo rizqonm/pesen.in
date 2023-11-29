@@ -18,7 +18,6 @@ import com.example.pesenin.ui.screens.homeScreen.Home
 import com.example.pesenin.ui.screens.loginScreen.LoginScreen
 import com.example.pesenin.ui.screens.loginScreen.LoginViewModel
 import com.example.pesenin.ui.screens.loginScreen.SignUpScreen
-<<<<<<< Updated upstream
 import com.example.pesenin.ui.screens.pesan.HalamanKeranjang
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran2
@@ -26,11 +25,9 @@ import com.example.pesenin.ui.screens.pesan.HalamanPembayaran3
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan2
 import com.example.pesenin.ui.screens.pesan.HalamanStatusPesanan
-=======
 import com.example.pesenin.ui.screens.menukantin.MenuKantin
 import com.example.pesenin.ui.screens.pilihKantin.LihatDaftarMenu
 import com.example.pesenin.ui.screens.pilihKantin.PilihKantinViewModel
->>>>>>> Stashed changes
 import com.example.pesenin.ui.screens.profile.ProfileScreen
 import com.example.pesenin.ui.screens.profile.ProfileViewModel
 
@@ -114,13 +111,10 @@ fun Navigation(
                 Home(loginViewModel = loginViewModel, navController)
             }
 
-<<<<<<< Updated upstream
             composable(NavItem.Home.path) { Home(loginViewModel = LoginViewModel(), navController) }
             composable(NavItem.Restaurant.path) { HalamanPilihPesanan(navController) }
-=======
             composable(NavItem.Home.path) { LihatDaftarMenu(pilihKantinViewModel= PilihKantinViewModel()) }
             composable(NavItem.Restaurant.path) { MenuKantin() }
->>>>>>> Stashed changes
             composable(NavItem.Profile.path) { ProfileScreen(profileViewModel = ProfileViewModel(), navController) }
             composable(HomeRoutes.Bucket.name) { HalamanKeranjang(navController) }
             composable(HomeRoutes.Pesanan2.name) { HalamanPilihPesanan2(navController)}
