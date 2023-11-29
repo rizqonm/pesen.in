@@ -270,7 +270,7 @@ fun LoginScreen(
     ) {
         if(isError){
             Text(
-                text = loginUiState?.loginError ?: "Unknown error",
+                text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
                 color = Color.Red,
             )
         }
@@ -766,7 +766,7 @@ fun SignUpScreen(
     ) {
         if (isError) {
             Text(
-                text = loginUiState?.loginError ?: "Unknown error",
+                text = loginUiState?.loginError ?: "Isilah data dengan lengkap!",
                 color = Color.Red,
             )
         }
