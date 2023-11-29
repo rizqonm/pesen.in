@@ -31,12 +31,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 
 @Composable
-fun HalamanKeranjang(modifier: Modifier = Modifier){
+fun HalamanKeranjang(navController: NavHostController){
     var jumlah1 by remember { mutableIntStateOf(2) }
     var jumlah2 by remember { mutableIntStateOf(1) }
     var jumlah3 by remember { mutableIntStateOf(1) }
@@ -129,7 +130,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                                 ) {
                                     Button(
                                         onClick = {
-                                            if(jumlah1 > 0) jumlah1--;
+                                            if(jumlah1 > 0) jumlah1--
                                         },
                                         shape = CircleShape,
                                         modifier = Modifier
@@ -456,7 +457,7 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0C7E9)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = modifier
+                    modifier = Modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -469,11 +470,20 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
 
                 }
                 Button(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(HomeRoutes.Pesanan2.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+
+                    },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = modifier
+                    modifier = Modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -489,8 +499,8 @@ fun HalamanKeranjang(modifier: Modifier = Modifier){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanKeranjangPreview() {
-    HalamanKeranjang(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanKeranjangPreview() {
+//    HalamanKeranjang(Modifier)
+//}

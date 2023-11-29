@@ -109,13 +109,21 @@ fun HalamanPilihPesanan(navController: NavHostController) {
                     .clip(shape = RoundedCornerShape(12.dp))
                     .background(color = Color.White)
                     .padding(8.dp)
-            ) {
+            )
+            {
                 Box(
                     modifier = Modifier
                         .requiredWidth(width = 148.dp)
                         .requiredHeight(height = 100.dp)
                         .clip(shape = RoundedCornerShape(6.dp))
-                        .background(color = Color(0xfff4f5f9)))
+                        .background(color = Color(0xfff4f5f9)),
+                )
+//                Image(
+//                    painter = painterResource(id = R.drawable.lalapan),
+//                    contentDescription = "LalapanAyam",
+//                    modifier = Modifier
+//                        .size(117.dp, 77.dp)
+//                )
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally,

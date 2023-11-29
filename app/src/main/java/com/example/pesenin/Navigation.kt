@@ -25,7 +25,6 @@ import com.example.pesenin.ui.screens.pesan.HalamanPembayaran3
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan2
 import com.example.pesenin.ui.screens.pesan.HalamanStatusPesanan
-import com.example.pesenin.ui.screens.menukantin.MenuKantin
 import com.example.pesenin.ui.screens.pilihKantin.LihatDaftarMenu
 import com.example.pesenin.ui.screens.pilihKantin.PilihKantinViewModel
 import com.example.pesenin.ui.screens.profile.ProfileScreen
@@ -114,7 +113,7 @@ fun Navigation(
             composable(NavItem.Home.path) { Home(loginViewModel = LoginViewModel(), navController) }
             composable(NavItem.Restaurant.path) { HalamanPilihPesanan(navController) }
             composable(NavItem.Home.path) { LihatDaftarMenu(pilihKantinViewModel= PilihKantinViewModel()) }
-            composable(NavItem.Restaurant.path) { MenuKantin() }
+//            composable(NavItem.Restaurant.path) { MenuKantin() }
             composable(NavItem.Profile.path) { ProfileScreen(profileViewModel = ProfileViewModel(), navController) }
             composable(HomeRoutes.Bucket.name) { HalamanKeranjang(navController) }
             composable(HomeRoutes.Pesanan2.name) { HalamanPilihPesanan2(navController)}
