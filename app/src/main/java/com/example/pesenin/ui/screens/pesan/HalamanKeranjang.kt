@@ -453,7 +453,15 @@ fun HalamanKeranjang(navController: NavHostController){
                 }
 
                 Button(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(HomeRoutes.PesanNanti.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFB0C7E9)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
@@ -478,7 +486,6 @@ fun HalamanKeranjang(navController: NavHostController){
                             launchSingleTop = true
                             restoreState = true
                         }
-
                     },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),

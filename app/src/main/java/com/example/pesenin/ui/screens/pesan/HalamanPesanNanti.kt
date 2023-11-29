@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
@@ -31,9 +30,10 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.example.pesenin.HomeRoutes
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.TopBar
 import com.maxkeppeker.sheets.core.models.base.rememberSheetState
@@ -47,16 +47,17 @@ import com.maxkeppeler.sheets.clock.models.ClockSelection
 import java.time.LocalDate
 import java.time.LocalTime
 
+//@OptIn(ExperimentalMaterial3Api::class)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HalamanPesanNanti(modifier: Modifier = Modifier) {
+fun HalamanPesanNanti(navController: NavHostController) {
     val selectedDate = remember { mutableStateOf<LocalDate?>(null) }
     val selectedTime = remember { mutableStateOf<LocalTime?>(null) }
     val calenderState = rememberSheetState()
     val clockState = rememberSheetState()
 
     Box(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(color = Color.White)
     ) {
@@ -198,7 +199,8 @@ fun HalamanPesanNanti(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .padding(50.dp)
                     .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Bottom
             ){
                 Button(onClick = {
                     calenderState.show()
@@ -225,17 +227,24 @@ fun HalamanPesanNanti(modifier: Modifier = Modifier) {
             }
             Column(
                 modifier = Modifier
-                    .padding(18.dp)
-                    .height(330.dp),
+                    .padding(18.dp),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Bottom
             ){
                 Button(
-                    onClick = { },
+                    onClick = {
+                        navController.navigate(HomeRoutes.Bayar1.name) {
+                            navController.graph.startDestinationRoute?.let { route ->
+                                popUpTo(route) { saveState = true }
+                            }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
                     shape = RoundedCornerShape(8.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xfffc7b33)),
                     contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp),
-                    modifier = modifier
+                    modifier = Modifier
                         .requiredWidth(width = 350.dp)
                 ) {
                     Text(
@@ -251,8 +260,8 @@ fun HalamanPesanNanti(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun HalamanPesanNanti() {
-    HalamanPesanNanti(Modifier)
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun HalamanPesanNanti() {
+//    HalamanPesanNanti()
+//}
