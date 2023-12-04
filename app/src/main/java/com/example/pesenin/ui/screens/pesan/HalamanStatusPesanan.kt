@@ -9,6 +9,11 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pesenin.ui.theme.TopBar
+import kotlinx.coroutines.delay
 
 @Composable
 fun HalamanStatusPesanan(value:Int) {
@@ -60,7 +66,22 @@ fun HalamanStatusPesanan(value:Int) {
                     y = 150.dp
                 )
         ){
-            when (value) {
+            var currentStatus by remember { mutableIntStateOf(1) }
+
+            LaunchedEffect(true) {
+                while (true) {
+                    delay(3000)
+
+                    currentStatus = when (currentStatus) {
+                        1 -> 2
+                        2 -> 3
+                        3 -> 4
+                        else -> 1
+                    }
+                }
+            }
+
+            when (currentStatus) {
                 1 -> {
                     StatusPesanan1()
                 }

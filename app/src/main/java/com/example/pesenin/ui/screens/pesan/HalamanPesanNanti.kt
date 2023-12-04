@@ -55,6 +55,9 @@ fun HalamanPesanNanti(navController: NavHostController) {
     val selectedTime = remember { mutableStateOf<LocalTime?>(null) }
     val calenderState = rememberSheetState()
     val clockState = rememberSheetState()
+    val disabledDatess = (1..10000).map {
+        LocalDate.now().minusDays(it.toLong())
+    }
 
     Box(
         modifier = Modifier
@@ -178,7 +181,7 @@ fun HalamanPesanNanti(navController: NavHostController) {
                     monthSelection = true,
                     yearSelection = true,
                     style = CalendarStyle.MONTH,
-                    disabledDates = listOf(LocalDate.now().plusDays(7))
+                    disabledDates = disabledDatess
                 ),
                 selection = CalendarSelection.Date { date ->
                     selectedDate.value = date
