@@ -25,7 +25,7 @@ import com.example.pesenin.ui.theme.TopBar
 import kotlinx.coroutines.delay
 
 @Composable
-fun HalamanStatusPesanan(value:Int) {
+fun HalamanStatusPesanan() {
 
     Box(
         modifier = Modifier
@@ -70,7 +70,7 @@ fun HalamanStatusPesanan(value:Int) {
 
             LaunchedEffect(true) {
                 while (true) {
-                    delay(3000)
+                    delay(2500)
 
                     currentStatus = when (currentStatus) {
                         1 -> 2
