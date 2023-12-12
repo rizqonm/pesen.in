@@ -14,9 +14,7 @@ import android.webkit.MimeTypeMap
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,19 +22,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.MailOutline
-import androidx.compose.material.icons.filled.School
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.School
@@ -45,8 +34,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -61,7 +48,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -71,12 +57,10 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
 import com.example.pesenin.R
 import com.example.pesenin.ui.theme.PeseninTheme
 import com.google.firebase.Firebase
@@ -93,171 +77,6 @@ fun LoginScreen(
     val loginUiState = loginViewModel?.loginUiState
     val isError = loginUiState?.loginError!= null
     val context = LocalContext.current
-
-//    Column(modifier = Modifier.fillMaxSize(),
-//        horizontalAlignment = Alignment.Start,
-//    ){
-//        if(isError){
-//            Text(
-//                text = loginUiState?.loginError ?: "Unknown error",
-//                color = Color.Red,
-//            )
-//        }
-//
-//        Text(
-//            text = "Selamat Datang",
-//            fontSize = 18.sp,
-//            lineHeight = 28.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828),
-//            modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp),
-//            textAlign = TextAlign.Right,
-//        )
-//
-//        Text(
-//            text = "Masuk untuk menjelajah lebih jauh",
-//            fontSize = 12.sp,
-//            modifier = Modifier.padding(start = 16.dp, bottom = 38.dp),
-//            lineHeight = 18.sp,
-//            fontWeight = FontWeight(400),
-//            color = Color(0xFF667085),
-//            textAlign = TextAlign.Right,
-//        )
-//
-//
-//        Image(
-//            painter = painterResource(id = R.drawable.pana),
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .width(153.66031.dp)
-//                .height(150.dp),
-//            contentDescription = ""
-//        )
-//
-//        Text(
-//            text = "Email",
-//            modifier = Modifier.padding(start=16.dp, top=30.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(start = 16.dp, end = 16.dp),
-//            value = loginUiState?.email ?: "",
-//            onValueChange = {loginViewModel?.onEmailChange(it)},
-////            leadingIcon = {
-////                Icon(
-////                    imageVector = Icons.Default.Person,
-////                    contentDescription = null,
-////                )
-////            },
-//            label = {
-//                Text(
-//                    text = "Masukkan Email",
-//                    fontSize = 14.sp
-//                )
-//            },
-//            isError = isError
-//        )
-//
-//        var showPassword by remember { mutableStateOf(value = false) }
-//
-//        Text(
-//            text = "Password",
-//            modifier = Modifier.padding(start=16.dp, top=16.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(start = 16.dp, end = 16.dp),
-//            value = loginUiState?.password ?: "",
-//            onValueChange = {loginViewModel?.onPasswordChange(it)},
-////            leadingIcon = {
-////                Icon(
-////                    imageVector = Icons.Default.Person,
-////                    contentDescription = null,
-////                )
-////            },
-//            label = {
-//                Text(
-//                    text = "Masukkan Password",
-//                    fontSize = 14.sp
-//                )
-//            },
-//            visualTransformation = if (showPassword) {
-//                VisualTransformation.None
-//            } else {
-//                PasswordVisualTransformation()
-//            },
-//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-//            trailingIcon = {
-//                if (showPassword) {
-//                    IconButton(onClick = { showPassword = false }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.Visibility,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                } else {
-//                    IconButton(
-//                        onClick = { showPassword = true }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.VisibilityOff,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                }
-//            },
-//            isError = isError
-//        )
-//
-//        Button(onClick = { loginViewModel?.loginUser(context) },
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(start = 16.dp, top = 40.dp, bottom = 25.dp, end = 16.dp)
-//                .background(color = Color(0xFF4B4EFC), shape = RoundedCornerShape(size = 8.dp)),
-//            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4B4EFC))
-//        ) {
-//            Text(text = "Login",
-//                fontSize = 18.sp,
-//                lineHeight = 28.sp,
-//                fontWeight = FontWeight(600),
-//                color = Color(0xFFFFFFFF),)
-//        }
-//
-//        Row (modifier = Modifier.fillMaxWidth(),
-//            horizontalArrangement = Arrangement.Center,
-//        ){
-//            Text(text = "Belum memiliki akun? ",
-//                fontSize = 14.sp,
-//                lineHeight = 20.sp,
-//                fontWeight = FontWeight(600),
-//                color = Color(0xFF101828),
-//                modifier = Modifier.padding(top=15.dp))
-//            TextButton(onClick = { onNavToSignUpPage.invoke() }) {
-//                Text(text = "Daftar")
-//            }
-//        }
-//
-//        if(loginUiState?.isLoading == true){
-//            CircularProgressIndicator()
-//        }
-//
-//        LaunchedEffect(key1 = loginViewModel?.hasUser){
-//            if(loginViewModel?.hasUser == true){
-//                onNavToHomePage.invoke()
-//            }
-//        }
-//    }
 
     Column(
         modifier= Modifier
@@ -461,17 +280,10 @@ fun SignUpScreen(
         uri?.let {
             imageUri = it
 
-//            val cursor: Cursor? = context.contentResolver.query(uri, null, null, null, null)
-//            fileName = cursor?.use {
-//                it.moveToFirst()
-//                val nameIndex: Int = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-//                it.getString(nameIndex)
-//            }!!
-
             val contentResolver = context.contentResolver
             val mimeTypeFilter = MimeTypeMap.getSingleton().getMimeTypeFromExtension(contentResolver.getType(it))
             val cursor: Cursor? = contentResolver.query(it, null, null, null, null)
-            fileName = cursor?.use {
+            fileName = cursor?.use { it ->
                 it.moveToFirst()
                 val nameIndex: Int = it.getColumnIndex(OpenableColumns.DISPLAY_NAME)
                 it.getString(nameIndex)
@@ -487,283 +299,6 @@ fun SignUpScreen(
             loginViewModel?.onProfilChange(bitmap.value, imageUri!!, img.toString())
         }
     }
-
-
-
-//    Column(modifier = Modifier
-//        .fillMaxSize()
-//        .verticalScroll(rememberScrollState())
-//        .padding(start = 16.dp, end = 16.dp),
-//        horizontalAlignment = Alignment.Start,
-//    ){
-//        if(isError){
-//            Text(
-//                text = loginUiState?.signUpError ?: "Unknown error",
-//                color = Color.Red,
-//            )
-//        }
-//
-//        Text(
-//            text = "Halo!",
-//            fontSize = 18.sp,
-//            lineHeight = 28.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828),
-//            modifier = Modifier.padding(vertical = 12.dp),
-//            textAlign = TextAlign.Right,
-//        )
-//
-//        Text(
-//            text = "Buat akun untuk menjelajah lebih jauh",
-//            fontSize = 12.sp,
-//            modifier = Modifier.padding( bottom = 38.dp),
-//            lineHeight = 18.sp,
-//            fontWeight = FontWeight(400),
-//            color = Color(0xFF667085),
-//            textAlign = TextAlign.Right,
-//        )
-//
-//        Text(
-//            text = "Nama",
-//            modifier = Modifier.padding( top=20.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth(),
-//            value = loginUiState?.userNameSignUp ?: "",
-//            onValueChange = {loginViewModel?.onUserNameChangeSignUp(it)},
-//            label = {
-//                Text(
-//                    text = "Masukkan Nama",
-//                    fontSize = 14.sp
-//                )
-//            },
-//            isError = isError
-//        )
-//
-//        Text(
-//            text = "Email",
-//            modifier = Modifier.padding( top=16.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth(),
-//            value = loginUiState?.emailSignUp ?: "",
-//            onValueChange = {loginViewModel?.onEmailSignUpChange(it)},
-////            leadingIcon = {
-////                Icon(
-////                    imageVector = Icons.Default.Person,
-////                    contentDescription = null,
-////                )
-////            },
-//            label = {
-//                Text(
-//                    text = "Masukkan Email",
-//                    fontSize = 14.sp
-//                )
-//            },
-//            isError = isError
-//        )
-//
-////        var password by remember { mutableStateOf(value = "") }
-//        var showPasswordFirst by remember { mutableStateOf(value = false) }
-//        var showPasswordSecond by remember { mutableStateOf(value = false) }
-//
-//        Text(
-//            text = "Password",
-//            modifier = Modifier.padding( top=16.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth(),
-//            value = loginUiState?.passwordSignUp ?: "",
-//            onValueChange = {loginViewModel?.onPasswordChangeSignUp(it)},
-//            label = {
-//                Text(
-//                    text = "Masukkan Password",
-//                    fontSize = 14.sp
-//                )
-//            },
-////            visualTransformation = PasswordVisualTransformation(),
-//            isError = isError,
-//            visualTransformation = if (showPasswordFirst) {
-//                VisualTransformation.None
-//            } else {
-//                PasswordVisualTransformation()
-//            },
-//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-//            trailingIcon = {
-//                if (showPasswordFirst) {
-//                    IconButton(onClick = { showPasswordFirst = false }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.Visibility,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                } else {
-//                    IconButton(
-//                        onClick = { showPasswordFirst = true }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.VisibilityOff,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                }
-//            }
-//        )
-//
-//        Text(
-//            text = "Konfirmasi Password",
-//            modifier = Modifier.padding(top=16.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        OutlinedTextField(
-//            modifier = Modifier
-//                .fillMaxWidth(),
-//            value = loginUiState?.confirmPasswordSignUp ?: "",
-//            onValueChange = {loginViewModel?.onConfirmPasswordChange(it)},
-//            label = {
-//                Text(
-//                    text = "Masukkan Password",
-//                    fontSize = 14.sp
-//                )
-//            },
-//            visualTransformation = if (showPasswordSecond) {
-//                VisualTransformation.None
-//            } else {
-//                PasswordVisualTransformation()
-//            },
-//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-//            trailingIcon = {
-//                if (showPasswordSecond) {
-//                    IconButton(onClick = { showPasswordSecond = false }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.Visibility,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                } else {
-//                    IconButton(
-//                        onClick = { showPasswordSecond = true }) {
-//                        Icon(
-//                            imageVector = Icons.Filled.VisibilityOff,
-//                            contentDescription = "hide_password"
-//                        )
-//                    }
-//                }
-//            },
-//            isError = isError
-//        )
-//
-//        Text(
-//            text = "Unggah KTM*",
-//            modifier = Modifier.padding( top=16.dp,bottom=12.dp),
-//            fontSize = 12.sp,
-//            lineHeight = 12.sp,
-//            fontWeight = FontWeight(600),
-//            color = Color(0xFF101828)
-//        )
-//
-//        Column (modifier = Modifier.border(1.dp, Color.Gray, shape = RectangleShape)) {
-//            imageUri?.let { uri ->
-//                Image(
-//
-//                    painter = rememberImagePainter(uri),
-//                    contentDescription = null,
-//                    modifier = Modifier
-//                        .size(200.dp)
-//                        .background(MaterialTheme.colorScheme.background)
-//                        .align(Alignment.CenterHorizontally)
-//                )
-//            }
-//            TextButton(onClick = { launchImage.launch("image/*") },
-//                modifier = Modifier
-//                    .padding(start = 16.dp, end = 16.dp)
-//                    .fillMaxWidth()
-//                    .background(color = Color.White, shape = RectangleShape)) {
-//
-//                Column (modifier=Modifier.background(color= Color.White, shape = RectangleShape)){
-//
-//                    Icon(imageVector =Icons.Default.AddCircle,modifier = Modifier.fillMaxWidth(), contentDescription ="Tambah Foto",
-//                    )
-//                    Text(text = "Upload Gambar .jpeg",modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-//                }
-//            }
-//        }
-//
-//        Column(
-//            horizontalAlignment = Alignment.CenterHorizontally,
-//            modifier = Modifier.fillMaxWidth()
-//        ) {
-//            if (isUploading.value){
-//                CircularProgressIndicator(
-//                    modifier = Modifier.padding(16.dp),
-//                    color = Color.White
-//                )
-//            }
-//
-//        }
-//
-//        Button(onClick = {
-////            loginViewModel?.createUser(context)
-//            loginViewModel?.createUser(context as ComponentActivity)
-//        },
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(start = 16.dp, top = 40.dp, bottom = 25.dp, end = 16.dp)
-//                .background(color = Color(0xFF4B4EFC), shape = RoundedCornerShape(size = 8.dp)),
-//            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4B4EFC))
-//        ) {
-//            Text(text = "Buat Akun",
-//                fontSize = 18.sp,
-//                lineHeight = 28.sp,
-//                fontWeight = FontWeight(600),
-//                color = Color(0xFFFFFFFF),)
-//        }
-//
-//        Row (modifier = Modifier.fillMaxWidth(),
-//            horizontalArrangement = Arrangement.Center,
-//        ){
-//            Text(text = "Sudah memiliki akun? ",
-//                fontSize = 14.sp,
-//                lineHeight = 20.sp,
-//                fontWeight = FontWeight(600),
-//                color = Color(0xFF101828),
-//                modifier = Modifier.padding(top=15.dp))
-//            TextButton(onClick = { onNavToLoginPage.invoke()}) {
-//                Text(text = "Login")
-//            }
-//        }
-//
-//        if(loginUiState?.isLoading == true){
-//            CircularProgressIndicator()
-//        }
-//
-//        LaunchedEffect(key1 = loginViewModel?.hasUser){
-//            if(loginViewModel?.hasUser == true){
-//                onNavToHomePage.invoke()
-//            }
-//        }
-//    }
 
     Column(
         modifier= Modifier
@@ -1004,15 +539,7 @@ fun SignUpScreen(
                             ))
 
                     }
-                    imageUri?.let { uri ->
-//                        Image(
-//
-//                            painter = rememberImagePainter(uri),
-//                            contentDescription = null,
-//                            modifier = Modifier
-//                                .size(200.dp)
-//                                .background(MaterialTheme.colorScheme.background)
-//                        )
+                    imageUri?.let { _ ->
                         Text(
                             text = fileName,
                             modifier = Modifier.padding(start=12.dp, top=22.dp),
@@ -1107,18 +634,17 @@ fun uploadImageToFirebase(bitmap: Bitmap, context: Context, callback: (Boolean)-
 fun PrevLoginScreen(){
     PeseninTheme {
         LoginScreen(onNavToHomePage = { /*TODO*/ }) {
-            
+
         }
     }
 }
-
 
 @Preview(showSystemUi = true)
 @Composable
 fun PrevSignUpScreen(){
     PeseninTheme {
         SignUpScreen(onNavToHomePage = { /*TODO*/ }) {
-            
+
         }
     }
 }

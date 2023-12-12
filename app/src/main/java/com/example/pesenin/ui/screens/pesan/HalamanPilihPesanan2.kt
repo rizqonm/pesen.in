@@ -257,7 +257,6 @@ fun HalamanPilihPesanan2(navController: NavHostController) {
                 .background(color = Color.White)
                 .fillMaxWidth()
         ){
-//            BottomBar(1)
         }
     }
 }

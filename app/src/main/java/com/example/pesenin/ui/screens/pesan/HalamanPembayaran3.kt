@@ -150,14 +150,7 @@ fun HalamanPembayaran3(navController: NavHostController) {
                 .padding(horizontal = 8.dp, vertical = 16.dp)
                 .background(color = Color.White)
         ){
-//            BottomBar(1)
         }
     }
 }
 
-
-//@Preview(showBackground = true)
-//@Composable
-//private fun HalamanPembayaran3Preview() {
-//    HalamanPembayaran3(Modifier)
-//}

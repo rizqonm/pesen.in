@@ -22,6 +22,7 @@ import com.example.pesenin.ui.screens.pesan.HalamanKeranjang
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran2
 import com.example.pesenin.ui.screens.pesan.HalamanPembayaran3
+import com.example.pesenin.ui.screens.pesan.HalamanPesanNanti
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan
 import com.example.pesenin.ui.screens.pesan.HalamanPilihPesanan2
 import com.example.pesenin.ui.screens.pesan.HalamanStatusPesanan
@@ -39,6 +40,7 @@ enum class HomeRoutes{
     Home,
     Bucket,
     Pesanan2,
+    PesanNanti,
     Bayar1,
     Bayar2,
     Bayar3,
@@ -65,8 +67,8 @@ fun Navigation(
                 && currentDestination?.route != HomeRoutes.Bayar1.name
                 && currentDestination?.route != HomeRoutes.Bayar2.name
                 && currentDestination?.route != HomeRoutes.Bayar3.name
-                )
-            {
+                && currentDestination?.route != HomeRoutes.PesanNanti.name
+                ) {
                 BottomNavigationBar(navController = navController)
             }
         }
@@ -113,14 +115,14 @@ fun Navigation(
 
             composable(NavItem.Home.path) { Home(loginViewModel = LoginViewModel(), navController) }
             composable(NavItem.Restaurant.path) { HalamanPilihPesanan(navController) }
-            composable(NavItem.Home.path) { LihatDaftarMenu(pilihKantinViewModel= PilihKantinViewModel()) }
-//            composable(NavItem.Restaurant.path) { MenuKantin() }
-            composable(NavItem.Profile.path) { ProfileScreen(profileViewModel = ProfileViewModel(), navController) }
             composable(HomeRoutes.Bucket.name) { HalamanKeranjang(navController) }
             composable(HomeRoutes.Pesanan2.name) { HalamanPilihPesanan2(navController)}
             composable(HomeRoutes.Bayar1.name) { HalamanPembayaran(navController) }
             composable(HomeRoutes.Bayar2.name) { HalamanPembayaran2(navController) }
             composable(HomeRoutes.Bayar3.name) { HalamanPembayaran3(navController) }
+            composable(NavItem.Home.path) { LihatDaftarMenu(pilihKantinViewModel= PilihKantinViewModel()) }
+            composable(NavItem.Profile.path) { ProfileScreen(profileViewModel = ProfileViewModel(), navController) }
+            composable(HomeRoutes.PesanNanti.name) { HalamanPesanNanti(navController) }
             composable(HomeRoutes.Status.name) { HalamanStatusPesanan(1)}
         }
     }

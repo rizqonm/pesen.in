@@ -134,10 +134,3 @@ fun HalamanPembayaran2(navController: NavHostController) {
         }
     }
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//private fun HalamanPembayaran2Preview() {
-//    HalamanPembayaran2(Modifier)
-//}

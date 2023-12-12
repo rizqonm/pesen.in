@@ -1,5 +1,9 @@
 package com.example.pesenin.ui.screens.aturStatusPesanan
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
@@ -39,6 +43,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -46,18 +51,21 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.NotificationCompat
 import com.example.pesenin.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun DropdownStatus(){
-    val moviesList = listOf(
+fun DropdownStatus(
+    onStatusSelected: (String) -> Unit
+){
+    val statusList = listOf(
         "Menunggu konfirmasi",
         "Sedang diproses",
         "Selesai"
     )
     var expanded by remember { mutableStateOf(false) }
-    var selectedMovie by remember { mutableStateOf(moviesList[0]) }
+    var selectedStatus by remember { mutableStateOf(statusList[0]) }
 
     // menu box
     ExposedDropdownMenuBox(
@@ -73,7 +81,7 @@ fun DropdownStatus(){
                 .height(45.dp)
                 .padding(bottom = 0.dp),// menuAnchor modifier must be passed to the text field for correctness.
             readOnly = true,
-            value = selectedMovie,
+            value = selectedStatus,
             onValueChange = {},
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
             colors = ExposedDropdownMenuDefaults.textFieldColors(),
@@ -88,12 +96,13 @@ fun DropdownStatus(){
             },
         ) {
             // menu items
-            moviesList.forEach { selectionOption ->
+            statusList.forEach { selectionOption ->
                 DropdownMenuItem(
                     text = { Text(selectionOption) },
                     onClick = {
-                        selectedMovie = selectionOption
+                        selectedStatus = selectionOption
                         expanded = false
+                        onStatusSelected(selectedStatus)
                     },
                     contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding,
                 )
@@ -163,8 +172,10 @@ fun TableScreen() {
 @Preview(showBackground = true)
 @Composable
 fun AturStatusPesanan(){
+    val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
-
+    var notificationId by remember { mutableStateOf(1) }
+    var selectedStatus by remember { mutableStateOf("Menunggu konfirmasi") }
     val openDialog = rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         showDialog = false
     }
@@ -322,12 +333,16 @@ fun AturStatusPesanan(){
                 modifier = Modifier
                     .padding(end = 6.dp)
             )
-            DropdownStatus()
+            DropdownStatus(onStatusSelected = {newStatus -> selectedStatus = newStatus})
         }
         TableScreen()
         Spacer(modifier = Modifier.padding(top = 13.dp))
         Button(
-            onClick = { showDialog = true },
+            onClick = {
+                showDialog = true
+                showNotification(context, selectedStatus, notificationId)
+                notificationId++
+                      },
             colors = ButtonDefaults.buttonColors(Color(0xFF3A62A0)),
             modifier = Modifier
                 .border(
@@ -367,4 +382,40 @@ fun AturStatusPesanan(){
             )
         }
     }
+}
+
+private fun showNotification(context: Context, selectedStatus: String, notificationId: Int){
+    val channelId = "PesenInID"
+
+    val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+        val channel = NotificationChannel(
+            channelId,
+            "PesenIn",
+            NotificationManager.IMPORTANCE_DEFAULT
+        )
+        notificationManager.createNotificationChannel(channel)
+    }
+
+    val builder = NotificationCompat.Builder(context, channelId)
+        .setContentTitle("Status Pesananmu")
+        .setContentText("$selectedStatus")
+        .setSmallIcon(R.drawable.baseline_notifications_active_24)
+        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        .setVisibility(NotificationCompat.VISIBILITY_PRIVATE)
+        .setPublicVersion(
+            NotificationCompat.Builder(context, channelId)
+                .setContentTitle("Hidden")
+                .setContentText("Unlock to see Message")
+                .build()
+        )
+
+    notificationManager.notify(notificationId, builder.build())
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AturStatusPesananPreview() {
+    AturStatusPesanan()
 }

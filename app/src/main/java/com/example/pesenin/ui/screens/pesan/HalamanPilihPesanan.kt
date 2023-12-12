@@ -118,12 +118,6 @@ fun HalamanPilihPesanan(navController: NavHostController) {
                         .clip(shape = RoundedCornerShape(6.dp))
                         .background(color = Color(0xfff4f5f9)),
                 )
-//                Image(
-//                    painter = painterResource(id = R.drawable.lalapan),
-//                    contentDescription = "LalapanAyam",
-//                    modifier = Modifier
-//                        .size(117.dp, 77.dp)
-//                )
                 Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically),
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -365,20 +359,5 @@ fun HalamanPilihPesanan(navController: NavHostController) {
                 }
             }
         }
-//        Row(
-//            modifier = Modifier
-//                .align(alignment = Alignment.BottomStart)
-//                .background(color = Color.White)
-//                .fillMaxWidth()
-//        ){
-//            BottomBar(132)
-//        }
     }
 }
-
-
-//@Preview(showBackground = true)
-//@Composable
-//private fun HalamanPilihPesananPreview() {
-//    HalamanPilihPesanan(Modifier)
-//}
