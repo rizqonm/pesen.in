@@ -65,7 +65,8 @@ fun Navigation(
                 && currentDestination?.route != HomeRoutes.Bayar1.name
                 && currentDestination?.route != HomeRoutes.Bayar2.name
                 && currentDestination?.route != HomeRoutes.Bayar3.name
-                ) {
+                )
+            {
                 BottomNavigationBar(navController = navController)
             }
         }
